@@ -11,14 +11,14 @@ class CuisinesController < ApplicationController
 
 	def create
 		@cuisine = Cuisine.new cuisine_params
-		if @cuisine.name.blank?
-			render "error_add_cuisine"
-		else				
+		if @cuisine.valid?
 			if @cuisine.save
 				redirect_to @cuisine
 			else
 				puts "erro ao salvar dados"
 			end
+		else				
+			render :new
 		end
 	end
 
