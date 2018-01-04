@@ -12,11 +12,16 @@ class RecipesController < ApplicationController
 
 	def create
 		@recipe = Recipe.new recipe_params
-		if @recipe.save
-			redirect_to @recipe
+		if @recipe.valid?
+			if @recipe.save
+				redirect_to @recipe
+			else
+				puts "erro ao salvar os dados"
+			end
 		else
-			puts "erro ao salvar os dados"
-		end
+			@cuisines = Cuisine.all
+			render :new
+		end		
 	end
 
 	private

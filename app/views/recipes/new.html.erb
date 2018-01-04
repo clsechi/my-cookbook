@@ -1,3 +1,7 @@
+<% if @recipe.errors.any? %>
+  <h3>Você deve informar todos os dados da receita</h3>
+<% end %>
+
 <%= form_for @recipe do |f| %>
 	
 	<div>
