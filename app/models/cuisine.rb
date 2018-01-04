@@ -1,0 +1,3 @@
+class Cuisine < ApplicationRecord
+	
+end
