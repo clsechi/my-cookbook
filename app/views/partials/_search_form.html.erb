@@ -1,5 +1,7 @@
 <%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:busca, "Busca") %>
-  <%= text_field_tag(:busca) %>
-  <%= submit_tag("Buscar") %>
+	<div class="form-group">
+		<%= label_tag :busca, "Busca", class: ""  %>
+		<%= text_field_tag :busca, nil,  class: "form-control" %>
+		<%= submit_tag "Buscar" , class: "btn btn-primary" %>
+	</div>
 <% end %>
