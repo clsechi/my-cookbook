@@ -1,0 +1,14 @@
+<% if @recipe_type.errors.any? %>
+	<h3>Você deve informar o nome do tipo de receita</h3>
+<% end %>
+
+<%= form_for @recipe_type do |f| %>
+	
+	<div>
+		<%= f.label :name, "Nome" %>
+		<%= f.text_field :name, required: true %>
+	</div>
+
+	<%= f.submit "Enviar" %>
+
+<% end %>
