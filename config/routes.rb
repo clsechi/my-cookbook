@@ -9,4 +9,6 @@ Rails.application.routes.draw do
 
   resources :recipe_types, only: [:show, :new, :create]
 
+  get "/search" => "recipes#search", as: :search_recipe
+
 end

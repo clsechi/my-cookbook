@@ -47,6 +47,11 @@ class RecipesController < ApplicationController
 		end
 	end
 
+	def search
+		@recipe_name = params[:busca]
+		@recipes = Recipe.where "title like ?", "%#{@recipe_name}%"
+	end
+
 	private
 
 	def recipe_params
@@ -54,4 +59,3 @@ class RecipesController < ApplicationController
 	end
 
 end
-

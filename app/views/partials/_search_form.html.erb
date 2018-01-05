@@ -1,0 +1,5 @@
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:busca, "Busca") %>
+  <%= text_field_tag(:busca) %>
+  <%= submit_tag("Buscar") %>
+<% end %>

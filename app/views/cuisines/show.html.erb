@@ -1,5 +1,7 @@
 <h1><%= @cuisine.name %></h1>
 
+<%= render partial: "/partials/search_form" %>
+
 <% if !@recipes.blank? %>
 
 	<% @recipes.each do |recipe| %>

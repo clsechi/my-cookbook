@@ -1,23 +1,23 @@
-<h1><%= @recipe_type.name %></h1>
+<h1>Resultado da busca por: <%= @recipe_name %></h1>
 
-<%= render partial: "/partials/search_form" %>
+<% if @recipes.blank? %>
+	
+	<h2>Nenhuma receita encontrada</h2>
 
-<% if !@recipes.blank? %>
+<% else %> 
 
 	<% @recipes.each do |recipe| %>
 
 		<h1><%= link_to recipe.title, recipe_path(recipe.id) %></h1>
 		<ul>
 			<li><%= recipe.recipe_type.name%></li>
-			<li><%= recipe.cuisine.name %></li>
+			<li><%= recipe.cuisine.name%></li>
 			<li><%= recipe.difficulty %></li>
 			<li><%= recipe.cook_time %> minutos</li>
 		</ul>
 
 	<% end %>
 
-<% else %>
-
-	<h3>Nenhuma receita encontrada para este tipo de receitas</h3>
-
 <% end %>
+
+<%= link_to "Voltar", root_path %>

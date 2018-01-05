@@ -1,6 +1,10 @@
 <h1>CookBook</h1>
 <p>Bem-vindo ao maior livro de receitas online</p>
 
+<%= render partial: "/partials/search_form" %>
+
+<br>
+
 <%= link_to "Enviar uma receita", new_recipe_path %>
 
 <% @cuisines.each do |cuisine| %>
@@ -27,6 +31,3 @@
 	</ul>
 
 <% end %>
-
-
-
