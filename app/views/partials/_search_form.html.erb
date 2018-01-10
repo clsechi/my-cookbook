@@ -1,5 +1,5 @@
 <%= form_tag("/search", method: "get") do %>
-	<div class="form-group">
+	<div class="form-inline search">
 		<%= label_tag :busca, "Busca", class: ""  %>
 		<%= text_field_tag :busca, nil,  class: "form-control" %>
 		<%= submit_tag "Buscar" , class: "btn btn-primary" %>

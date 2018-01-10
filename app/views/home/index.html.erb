@@ -1,56 +1,28 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-3">
-			<h1>CookBook</h1>
-			<p>Bem-vindo ao maior livro de receitas online</p>
-		</div>
-		<div class="col-md-3">
-			<%= render partial: "/partials/search_form" %>
-		</div>
-		<div class="col-md-6">
-			<%= link_to "Enviar uma receita", new_recipe_path %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-2">
-			<span>Tipo</span>
-			<ul>
-				<% @cuisines.each do |cuisine| %>
-					<li><%= link_to cuisine.name, cuisine_path(cuisine.id) %></li>
-				<% end %>
-			</ul>
-			<span>Cozinha</span>
-			<ul>
-				<% @recipe_types.each do |recipe_type| %>
-				<li><%= link_to recipe_type.name, recipe_type_path(recipe_type.id) %></li>
-				<% end %>
-			</ul>
-		</div>
-		<div class="col-md-5">
+		<%= render partial: "/partials/type_and_cuisine" %>
+		<div class="col-sm-12 col-md-5">
 			<h2>Últimas Receitas</h2>
 			<div class="row">
 				<% @recipes.each do |recipe| %>
-					<div class="col-md-5">
-						<img src="pizza.jpg" class="img-responsive">
-					</div>
-					<div class="col-md-7">
-						<span><%= link_to recipe.title, recipe_path(recipe.id) %></span>
-						<ul style="list-style-type: none;">
-							<li>Tipo: <%= recipe.recipe_type.name%></li>
-							<li>Cozinha: <%= recipe.cuisine.name%></li>
-							<li>Dificuldade<%= recipe.difficulty %></li>
-							<li>Ṕreparo: <%= recipe.cook_time %> minutos</li>
-						</ul>
-					</div>
+				<div class="col-sm-5 col-md-5">
+					<img src="pizza.jpg" class="img-responsive">
+				</div>
+				<div class="col-sm-7 col-md-7">
+					<span><%= link_to recipe.title, recipe_path(recipe.id) %></span>
+					<ul>
+						<li>Tipo: <%= recipe.recipe_type.name%></li>
+						<li>Cozinha: <%= recipe.cuisine.name%></li>
+						<li>Dificuldade<%= recipe.difficulty %></li>
+						<li>Preparo: <%= recipe.cook_time %> minutos</li>
+					</ul>
+				</div>
 				<% end %>
 			</div>		
 		</div>
-		<div class="col-md-5">
+		<div class="col-sm-12 col-md-5">
 			<h2>Favoritas dos Usuários</h2>
-		</div>
-
-
-
-		
+			<span>TO DO</span>
+		</div>		
 	</div>
 </div>

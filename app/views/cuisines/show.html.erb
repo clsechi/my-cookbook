@@ -1,23 +1,29 @@
-<h1><%= @cuisine.name %></h1>
+<div class="container">
+	<div class="row">
+		<%= render partial: "/partials/type_and_cuisine" %>
+		<div class="col-md-10">
+			<h1><%= @cuisine.name %></h1>
 
-<%= render partial: "/partials/search_form" %>
+			<% if !@recipes.blank? %>
 
-<% if !@recipes.blank? %>
+			<% @recipes.each do |recipe| %>
 
-	<% @recipes.each do |recipe| %>
+			<h1><%= link_to recipe.title, recipe_path(recipe.id) %></h1>
+			<ul>
+				<li><%= recipe.recipe_type.name%></li>
+				<li><%= recipe.cuisine.name %></li>
+				<li><%= recipe.difficulty %></li>
+				<li><%= recipe.cook_time %> minutos</li>
+			</ul>
 
-		<h1><%= link_to recipe.title, recipe_path(recipe.id) %></h1>
-		<ul>
-			<li><%= recipe.recipe_type.name%></li>
-			<li><%= recipe.cuisine.name %></li>
-			<li><%= recipe.difficulty %></li>
-			<li><%= recipe.cook_time %> minutos</li>
-		</ul>
+			<% end %>
 
-	<% end %>
+			<% else %>
 
-<% else %>
+			<h3>Nenhuma receita encontrada para este tipo de cozinha</h3>
 
-	<h3>Nenhuma receita encontrada para este tipo de cozinha</h3>
+			<% end %>
+		</div>
+	</div>
+</div>
 
-<% end %>

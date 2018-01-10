@@ -1,25 +1,45 @@
-<h1><%= @recipe.title %></h1>
+<div class="container">
+	<div class="row">
+		<%= render partial: "/partials/type_and_cuisine" %>
+		<div class="col-md-5">
+			<h1><%= @recipe.title %></h1>
 
-<%= render partial: "/partials/search_form" %>
+			<p>Enviado por: </p>
 
-<h3>Detalhes</h3>
+			<h3>Detalhes</h3>
 
-<p><%= @recipe.recipe_type.name %></p>
+			<p>Tipo: <%= @recipe.recipe_type.name %></p>
 
-<p><%= @recipe.cuisine.name %></p>
+			<p>Cozinha: <%= @recipe.cuisine.name %></p>
 
-<p><%= @recipe.difficulty %></p>
+			<p>Dificuldade: <%= @recipe.difficulty %></p>
 
-<p><%= @recipe.cook_time %> minutos</p>
+			<p>Tempo de preparo: <%= @recipe.cook_time %> minutos</p>
+		</div>
+		<div class="col-md-5">
+			<img src="/pizza.jpg" class="img-responsive">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-5">			
+			<h3>Ingredientes</h3>
 
-<h3>Ingredientes</h3>
+			<p><%= @recipe.ingredients %></p>
 
-<p><%= @recipe.ingredients %></p>
+			<i class="fa fa-star fa-3x" aria-hidden="true"></i><a href="#">Salvar como Favorita</a>
 
-<h3>Como Preparar</h3>
+			<i class="fa fa-envelope fa-3x" aria-hidden="true"></i><a href="#">Enviar por Email</a>
+		</div>
+		<div class="col-md-5">
+			<h3>Como Preparar</h3>
 
-<p><%= @recipe.method %></p>
+			<p><%= @recipe.method %></p>
+		</div>
+	</div>
+	<%= link_to "Voltar", root_path %>
 
-<%= link_to "Voltar", root_path %>
+	<%= link_to "Editar", edit_recipe_path(@recipe) %>
+</div>
 
-<%= link_to "Editar", edit_recipe_path(@recipe) %>
+

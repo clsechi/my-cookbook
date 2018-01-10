@@ -4,13 +4,42 @@
     <title>MyCookbook</title>
     <%= csrf_meta_tags %>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-    
+    <%= stylesheet_link_tag "/css/custom.css" %>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
   </head>
 
   <body>
+  	<!-- navigation -->
+  	<nav class="navbar navbar-toggleable-md bg-info navbar-light">
+  		<div class="container-fluid">
+  			<div class="navbar-header">
+  				<a class="navbar-brand" href="/">CookBook</a>
+  			</div>
+  			<ul class="nav navbar-nav">
+  				<%= render partial: "/partials/search_form" %>
+  			</ul>
+  			<ul class="nav navbar-nav navbar-right">
+  				<li class="active"><a href="/">Início</a></li>
+  				<li><a href="#">Minhas Receitas</a></li>
+  				<li><%= link_to "Enviar uma receita", new_recipe_path %></li>
+  				<li><a href="#">Sair</a></li>
+  			</ul>
+  		</div>
+  	</nav>
+
     <%= yield %>
+
+    <!-- footer -->
+	<div class="text-center center-block footer">
+		<p class=""> CookBook | Copyright 2017 </p>
+		<a href="#"><i class="fa fa-facebook-official fa-3x"></i></a>
+		<a href="#"><i class="fa fa-twitter fa-3x social"></i></a>
+	</div>
   </body>
 </html>
