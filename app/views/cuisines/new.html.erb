@@ -2,6 +2,12 @@
 	<h3>Você deve informar o nome da cozinha</h3>
 <% end %>
 
+<% @cuisine.errors.full_messages.each do |msg| %>
+	<div class="alert alert-danger">
+		<%= msg %>
+	</div>
+<% end %>
+
 <%= form_for @cuisine do |f| %>
 	
 	<div>
