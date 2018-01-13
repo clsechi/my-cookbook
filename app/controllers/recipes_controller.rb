@@ -1,16 +1,13 @@
 class RecipesController < ApplicationController
 
+	before_action :set_cuisines_and_types, only: [:show, :new, :edit]
+
 	def show
-		id = params[:id]
-		@recipe = Recipe.find(id)
-		@cuisines = Cuisine.all
-		@recipe_types = RecipeType.all
+		@recipe = Recipe.find(params[:id])
 	end
 
 	def new 
 		@recipe = Recipe.new
-		@cuisines = Cuisine.all
-		@recipe_types = RecipeType.all
 	end
 
 	def create
@@ -22,29 +19,24 @@ class RecipesController < ApplicationController
 				puts "erro ao salvar os dados"
 			end
 		else
-			@cuisines = Cuisine.all
-			@recipe_types = RecipeType.all
+			set_cuisines_and_types
 			render :new
 		end		
 	end
 
 	def edit
 		@recipe = Recipe.find(params[:id])
-		@cuisines = Cuisine.all
-		@recipe_types = RecipeType.all
 		render :edit
 	end
 
 	def update
-		#nao esta recebendo o objeto
 		@recipe = Recipe.find(params[:id])
 		if @recipe.update recipe_params
 			redirect_to @recipe
 		elsif @recipe.valid?
 			puts "erro ao salvar os dados"
 		else			
-			@cuisines = Cuisine.all
-			@recipe_types = RecipeType.all
+			set_cuisines_and_types
 			render :new
 		end
 	end
@@ -58,6 +50,11 @@ class RecipesController < ApplicationController
 
 	def recipe_params
 		params.require(:recipe).permit(:title, :recipe_type_id, :cuisine_id, :difficulty, :cook_time, :ingredients, :method)
+	end
+
+	def set_cuisines_and_types
+		@cuisines = Cuisine.all
+		@recipe_types = RecipeType.all
 	end
 
 end
