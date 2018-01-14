@@ -11,13 +11,11 @@ class RecipesController < ApplicationController
 	end
 
 	def create
-		@recipe = Recipe.new recipe_params
-		if @recipe.valid?
-			if @recipe.save
-				redirect_to @recipe
-			else
-				puts "erro ao salvar os dados"
-			end
+		@recipe = Recipe.new recipe_params		
+		if @recipe.save
+			redirect_to @recipe
+		elsif @recipe.valid?
+			puts "erro ao salvar os dados"
 		else
 			set_cuisines_and_types
 			render :new
@@ -44,6 +42,16 @@ class RecipesController < ApplicationController
 	def search
 		@recipe_name = params[:busca]
 		@recipes = Recipe.where "title like ?", "%#{@recipe_name}%"
+	end
+
+	def destroy
+		recipe = Recipe.find(params[:id])
+		if recipe.destroy
+			redirect_to root_path
+			flash[:notice] = 'Receita removida com sucesso'
+		else
+			puts "erro ao deletar dados"
+		end
 	end
 
 	private

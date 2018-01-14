@@ -1,7 +1,12 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
-			<p class="text-center">Bem-vindo ao maior livro de receitas online</p>
+			<h2 class="text-center">Bem-vindo ao maior livro de receitas online</h2>
+			<% if flash[:notice] %>
+				<div class="alert alert-success">
+					<%= flash[:notice] %>
+				</div>
+			<% end %>
 		</div>
 		<%= render partial: "/partials/type_and_cuisine" %>		
 		<div class="col-sm-12 col-md-5">
