@@ -11,7 +11,8 @@ class RecipesController < ApplicationController
 	end
 
 	def create
-		@recipe = Recipe.new recipe_params		
+		@recipe = Recipe.new recipe_params
+		@recipe.user = current_user	
 		if @recipe.save
 			redirect_to @recipe
 		elsif @recipe.valid?
@@ -19,7 +20,7 @@ class RecipesController < ApplicationController
 		else
 			set_cuisines_and_types
 			render :new
-		end		
+		end
 	end
 
 	def edit

@@ -3,18 +3,19 @@ require 'rails_helper'
 feature 'Visitor search for recipes' do
   scenario 'from home page' do
     # cria os dados necessários previamente
+    user = create(:user)    
     cuisine = create(:cuisine, name: 'Brasileira')
     recipe_type = create(:recipe_type, name: 'Sobremesa')
     another_recipe_type = create(:recipe_type, name: 'Entrada')
 
     recipe = create(:recipe, title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, difficulty: 'Médio',
+                           cuisine: cuisine, user: user, difficulty: 'Médio',
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
                            method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     another_recipe = create(:recipe, title: 'Salada de cenoura', recipe_type: another_recipe_type,
-                           cuisine: cuisine, difficulty: 'Facil',
+                           cuisine: cuisine, user: user, difficulty: 'Facil',
                            cook_time: 60,
                            ingredients: 'Cenoura e legumes',
                            method: 'Cozinhe a cenoura, misture com os legumes')
@@ -36,11 +37,12 @@ feature 'Visitor search for recipes' do
 
   scenario 'and navigate to recipe details' do
     # cria os dados necessários previamente
+    user = create(:user)
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe_type = RecipeType.create(name: 'Sobremesa')
 
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, difficulty: 'Médio',
+                           cuisine: cuisine, user: user, difficulty: 'Médio',
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
                            method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')

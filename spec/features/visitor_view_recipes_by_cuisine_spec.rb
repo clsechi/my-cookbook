@@ -4,11 +4,12 @@ feature 'Visitor view recipes by cuisine' do
 
   scenario 'from home page' do
     # cria os dados necessários previamente
+    user = create(:user)
     cuisine = Cuisine.create(name: 'Brasileira')
     recipe_type = RecipeType.create(name: 'Sobremesa')
 
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                          cuisine: cuisine, difficulty: 'Médio',
+                          cuisine: cuisine, user: user, difficulty: 'Médio',
                           cook_time: 60,
                           ingredients: 'Farinha, açucar, cenoura',
                           method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
@@ -28,10 +29,11 @@ feature 'Visitor view recipes by cuisine' do
 
   scenario 'and view only cuisine recipes' do
     # cria os dados necessários previamente
+    user = create(:user)
     brazilian_cuisine = Cuisine.create(name: 'Brasileira')
     dessert_recipe_type = RecipeType.create(name: 'Sobremesa')
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: dessert_recipe_type,
-                          cuisine: brazilian_cuisine, difficulty: 'Médio',
+                          cuisine: brazilian_cuisine, user: user, difficulty: 'Médio',
                           cook_time: 60,
                           ingredients: 'Farinha, açucar, cenoura',
                           method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
@@ -39,7 +41,7 @@ feature 'Visitor view recipes by cuisine' do
     italian_cuisine = Cuisine.create(name: 'Italiana')
     main_recipe_type = RecipeType.create(name: 'Prato Principal')
     italian_recipe = Recipe.create(title: 'Macarrão Carbonara', recipe_type: main_recipe_type,
-                                  cuisine: italian_cuisine, difficulty: 'Difícil',
+                                  cuisine: italian_cuisine, user: user, difficulty: 'Difícil',
                                   cook_time: 30, ingredients: 'Massa, ovos, bacon',
                                   method: 'Frite o bacon; Cozinhe a massa ate ficar al dent; Misture os ovos e o bacon a massa ainda quente;')
     # simula a ação do usuário
@@ -56,10 +58,11 @@ feature 'Visitor view recipes by cuisine' do
 
   scenario 'and cuisine has no recipe' do
     # cria os dados necessários previamente
+    user = create(:user)
     brazilian_cuisine = Cuisine.create(name: 'Brasileira')
     recipe_type = RecipeType.create(name: 'Sobremesa')
     recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                          cuisine: brazilian_cuisine, difficulty: 'Médio',
+                          cuisine: brazilian_cuisine, user: user, difficulty: 'Médio',
                           cook_time: 60,
                           ingredients: 'Farinha, açucar, cenoura',
                           method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')

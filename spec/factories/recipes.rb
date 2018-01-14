@@ -7,5 +7,6 @@ FactoryBot.define do
     add_attribute(:method) { 'Misturar tudo e assar' }
     cuisine
     'recipe-type'
+    user
   end
 end

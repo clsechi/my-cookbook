@@ -2,15 +2,16 @@ require 'rails_helper'
 
 feature 'User remove recipe' do
 	scenario 'successfully' do
-		#create data
-		cuisine = create(:cuisine, name: 'Paulista')
+	#create data
+    user = create(:user)
+	cuisine = create(:cuisine, name: 'Paulista')
     recipe_type = create(:recipe_type, name: 'Massa')
 
     recipe = create(:recipe, title: 'Miojo', recipe_type: recipe_type,
-                           cuisine: cuisine)
+                           cuisine: cuisine, user: user)
 
     another_recipe = create(:recipe, title: 'Macarrão', recipe_type: recipe_type,
-                           cuisine: cuisine)
+                           cuisine: cuisine, user: user)
 
     #simulate interaction
     visit root_path
