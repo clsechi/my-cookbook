@@ -1,8 +1,8 @@
 class RecipesController < ApplicationController
 
-	before_action :set_cuisines_and_types, only: [:show, :new, :edit]
+	before_action :set_cuisines_and_types, only: [:show, :new, :edit, :user_favorite]
 
-	#before_action :authenticate_user!, only: [:edit]
+	before_action :authenticate_user!, only: [:favorite] #:edit
 
 	def show
 		@recipe = Recipe.find(params[:id])
@@ -59,6 +59,16 @@ class RecipesController < ApplicationController
 		else
 			puts "erro ao deletar dados"
 		end
+	end
+
+	def favorite
+		recipe = Recipe.find(params[:id])
+		current_user.favorites << recipe
+		redirect_to :favorites
+	end
+
+	def user_favorite
+		@favorite_recipes = current_user.favorites
 	end
 
 	private

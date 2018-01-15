@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   resources :recipe_types, only: [:show, :new, :create]
 
-  get "/search" => "recipes#search", as: :search_recipe
+  get '/search' => 'recipes#search', as: :search_recipe
+
+  post '/favorite/:id' => 'recipes#favorite', as: :favorite_recipe
+
+  get '/favorites' => 'recipes#user_favorite'
 
 end

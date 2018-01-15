@@ -27,7 +27,7 @@
 
 			<p><%= @recipe.ingredients %></p>
 
-			<i class="fa fa-star fa-3x" aria-hidden="true"></i><a href="#">Salvar como Favorita</a>
+			<i class="fa fa-star fa-3x" aria-hidden="true"></i><%= link_to "Salvar como favorita", favorite_recipe_path(@recipe), method: :post  %>
 
 			<i class="fa fa-envelope fa-3x" aria-hidden="true"></i><a href="#">Enviar por Email</a>
 		</div>

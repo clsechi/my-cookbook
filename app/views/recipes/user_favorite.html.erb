@@ -1,0 +1,25 @@
+<div class="container">
+	<div class="row">
+		<%= render partial: "/partials/type_and_cuisine" %>
+		<div class="col-md-10">
+			<h1>Minhas Receitas Favoritas</h1>
+			<div class="row">
+				<% @favorite_recipes.each do |recipe| %>
+				<div class="col-sm-5 col-md-2">
+					<img src="pizza.jpg" class="img-responsive">
+				</div>
+				<div class="col-sm-7 col-md-4">
+					<span><%= link_to recipe.title, recipe_path(recipe.id) %></span>
+					<ul>
+						<li>Tipo: <%= recipe.recipe_type.name%></li>
+						<li>Cozinha: <%= recipe.cuisine.name%></li>
+						<li>Dificuldade: <%= recipe.difficulty %></li>
+						<li>Preparo: <%= recipe.cook_time %> minutos</li>
+					</ul>
+				</div>
+				<% end %>
+			</div>			
+		</div>		
+	</div>
+</div>
+
