@@ -1,11 +1,10 @@
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 col-md-12">
-			<h2 class="text-center">Bem-vindo ao maior livro de receitas online</h2>
+			<h1>Receitas</h1>
 		</div>
-		<%= render partial: "/partials/type_and_cuisine" %>		
-		<div class="col-sm-12 col-md-5">
-			<h2>Últimas Receitas</h2>
+		<%= render partial: "/partials/type_and_cuisine" %>	
+		<div class="col-md-10">
 			<div class="row">
 				<% @recipes.each do |recipe| %>
 				<div class="col-sm-5 col-md-5">
@@ -21,12 +20,7 @@
 					</ul>
 				</div>
 				<% end %>
-				<%= link_to 'Todas as Receitas', recipes_path %>
-			</div>		
+			</div>			
 		</div>
-		<div class="col-sm-12 col-md-5">
-			<h2>Favoritas dos Usuários</h2>
-			<span>TO DO</span>
-		</div>		
 	</div>
 </div>

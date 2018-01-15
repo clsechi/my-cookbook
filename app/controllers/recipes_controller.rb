@@ -1,8 +1,12 @@
 class RecipesController < ApplicationController
 
-	before_action :set_cuisines_and_types, only: [:show, :new, :edit, :user_favorite]
+	before_action :set_cuisines_and_types, only: [:show, :new, :edit, :user_favorite, :index]
 
 	before_action :authenticate_user!, only: [:favorite] #:edit
+
+	def index
+		@recipes = Recipe.all
+	end
 
 	def show
 		@recipe = Recipe.find(params[:id])
