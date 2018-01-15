@@ -16,27 +16,34 @@
 
   <body>
   	<!-- navigation -->
-  	<nav class="navbar navbar-toggleable-md bg-info navbar-light">
+  	<nav class="navbar navbar-toggleable-md navbar-default">
   		<div class="container-fluid">
   			<div class="navbar-header">
-  				<a class="navbar-brand" href="/">CookBook</a>
-  			</div>
-  			<ul class="nav navbar-nav">
-  				<%= render partial: "/partials/search_form" %>
-  			</ul>
-  			<ul class="nav navbar-nav navbar-right">
-  				<li class="active"><a href="/">Início</a></li>
-  				<li><a href="#">Minhas Receitas</a></li>
-  				<li><%= link_to "Enviar uma receita", new_recipe_path %></li>
-          <% if user_signed_in? %>
-            <li><a href="#">Bem-vindo <%= current_user.email %></a></li>
-  				  <li><%= link_to "Sair", destroy_user_session_path, :method => :delete  %></li>
-          <% else %>
-            <li><%= link_to "Entrar", new_user_session_path %></li>
-          <% end %>
-  			</ul>
-  		</div>
-  	</nav>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </button>
+          <a class="navbar-brand" href="/">CookBook</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <%= render partial: "/partials/search_form" %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Início</a></li>
+            <li><a href="#">Minhas Receitas</a></li>
+            <li><%= link_to "Enviar uma receita", new_recipe_path %></li>          
+            <% if user_signed_in? %>
+            <li><p class="navbar-text">Bem-vindo <%= current_user.email %></p></li>
+            <li><%= button_to "Sair", destroy_user_session_path, :method => :delete, class: "btn btn-success navbar-btn"   %></li>
+            <% else %>
+            <li><%= button_to "Entrar", new_user_session_path, class: "btn btn-success navbar-btn" %></li>
+            <% end %>
+          </ul>
+        </div>        
+      </div>
+    </nav>
 
     <% if flash[:notice] %>
       <div class="alert alert-success notice">

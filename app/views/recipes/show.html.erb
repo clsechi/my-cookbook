@@ -37,9 +37,13 @@
 			<p><%= @recipe.method %></p>
 		</div>
 	</div>
-	<%= link_to "Voltar", root_path %>
+	<%= link_to "Voltar", root_path, class: "btn btn-primary" %>
 
-	<%= link_to "Editar", edit_recipe_path(@recipe) %>
+	<% if current_user == @recipe.user %>
+
+		<%= link_to "Editar", edit_recipe_path(@recipe), class: "btn btn-info" %>
+
+	<% end %>
 
 	<%= link_to "Remover", @recipe, method: :delete, class: "btn btn-danger", data: { confirm: "Tem certeza que deseja remover #{@recipe.title}?" } %>
 </div>

@@ -11,7 +11,7 @@ feature 'User sign in' do
     click_on 'Login'
 
     expect(page).to have_content("Bem-vindo #{user.email}")
-    expect(page).not_to have_link('Entrar')
+    expect(page).not_to have_button('Entrar')
   end
 
   scenario 'user logout' do
@@ -25,6 +25,6 @@ feature 'User sign in' do
     click_on 'Sair'
 
     expect(page).not_to have_content("Bem-vindo #{user.email}")
-    expect(page).to have_link('Entrar')
+    expect(page).to have_button('Entrar')
   end
 end

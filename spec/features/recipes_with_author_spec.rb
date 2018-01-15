@@ -11,7 +11,7 @@ feature 'Recipes with author' do
     visit root_path
     click_on recipe.title
 
-    expect(current_path). to eq(recipe_path(recipe))
+    expect(current_path).to eq(recipe_path(recipe))
     expect(page).to have_css('h1', text: recipe.title)
     expect(page).to have_css('p', text: "Enviado por: #{recipe.user.email}")
     expect(page).to have_css('p', text: "Cozinha: #{recipe.cuisine.name}")

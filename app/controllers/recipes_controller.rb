@@ -2,6 +2,8 @@ class RecipesController < ApplicationController
 
 	before_action :set_cuisines_and_types, only: [:show, :new, :edit]
 
+	#before_action :authenticate_user!, only: [:edit]
+
 	def show
 		@recipe = Recipe.find(params[:id])
 	end
@@ -24,8 +26,12 @@ class RecipesController < ApplicationController
 	end
 
 	def edit
-		@recipe = Recipe.find(params[:id])
-		render :edit
+		if current_user
+			@recipe = Recipe.find(params[:id])
+			render :edit	
+		else
+			redirect_to root_path
+		end		
 	end
 
 	def update
