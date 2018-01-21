@@ -4,7 +4,11 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :recipes, only: [:show, :new, :create, :edit, :update, :destroy, :index]
+  resources :recipes, only: [:show, :new, :create, :edit, :update, :destroy, :index] do
+  	member do 
+  		post 'share'
+  	end
+  end
 
   resources :cuisines, only: [:show, :new, :create]
 

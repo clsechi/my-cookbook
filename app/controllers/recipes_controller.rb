@@ -75,6 +75,19 @@ class RecipesController < ApplicationController
 		@favorite_recipes = current_user.favorites
 	end
 
+	def share
+		@recipe = Recipe.find(params[:id])
+    email = params[:email]
+    msg = params[:message]
+
+    #chama funcao do mailer que trata os parametros
+    RecipesMailer.share(email, msg,
+                        @recipe.id).deliver_now
+
+    flash[:notice] = "Receita enviada para #{email}"
+    redirect_to @recipe
+  end
+
 	private
 
 	def recipe_params
