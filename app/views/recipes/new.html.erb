@@ -1,6 +1,8 @@
 <% if @recipe.errors.any? %>
-	<h3><%= @recipe.errors.full_messages %></h3>
- 	<h3>Você deve informar todos os dados da receita</h3>
+	<div >
+		<h4 class="alert alert-danger"><%= @recipe.errors.full_messages %></h4>
+	 	<h4 class="alert alert-danger">Você deve informar todos os dados da receita</h4>
+	</div>	
 <% end %>
 
 <%= render partial: 'form_recipe' %>

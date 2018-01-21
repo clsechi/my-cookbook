@@ -2,6 +2,12 @@
 	<h3>Você deve informar o nome do tipo de receita</h3>
 <% end %>
 
+<% @recipe_type.errors.full_messages.each do |msg| %>
+	<div class="alert alert-danger">
+		<%= msg %>
+	</div>
+<% end %>
+
 <%= form_for @recipe_type do |f| %>
 	
 	<div>

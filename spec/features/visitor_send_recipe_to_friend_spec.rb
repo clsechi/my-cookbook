@@ -15,7 +15,7 @@ feature 'Visitor send recipe to a friend' do
                                                   recipe.id).and_call_original
     click_on 'Enviar'
 
-    expect(page).to have_content 'Receita enviada para amigo@email.com'
+    expect(page).to have_content('Receita enviada para amigo@email.com')
     expect(current_path).to eq recipe_path(recipe)
   end
 
@@ -30,7 +30,7 @@ feature 'Visitor send recipe to a friend' do
 
     click_on 'Enviar'
 
-    expect(page).to have_content 'Receita enviada para amigo@email.com'
+    expect(page).to have_content('Receita enviada para amigo@email.com')
     expect(current_path).to eq recipe_path(recipe)
     mail = ActionMailer::Base.deliveries.last
     expect(mail.to).to include 'amigo@email.com'

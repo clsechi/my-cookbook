@@ -2,9 +2,17 @@
 	<div class="row">
 		<%= render partial: "/partials/type_and_cuisine" %>
 		<div class="col-md-5">
-			<%= image_tag '/images/star.png', class: "img-responsive" if @recipe.featured? %><h1><%= @recipe.title %></h1>
+			<h1><%= image_tag '/images/star.png', size: "30", class: "star" if @recipe.featured? %><%= @recipe.title %></h1>
 
 			<p>Enviado por: <%= @recipe.user.email %></p>
+
+			<%= link_to "Voltar", root_path, class: "btn btn-primary" %>
+
+			<% if current_user == @recipe.user %>
+			<%= link_to "Editar", edit_recipe_path(@recipe), class: "btn btn-info" %>
+			<% end %>
+
+			<%= link_to "Remover", @recipe, method: :delete, class: "btn btn-danger", data: { confirm: "Tem certeza que deseja remover #{@recipe.title}?" } %>			
 
 			<h3>Detalhes</h3>
 
@@ -27,32 +35,27 @@
 
 			<p><%= @recipe.ingredients %></p>
 
-			<i class="fa fa-star fa-3x" aria-hidden="true"></i><%= link_to "Salvar como favorita", favorite_recipe_path(@recipe), method: :post  %>
+			<h3><i class="fa fa-star" aria-hidden="true"></i><%= link_to " Salvar como favorita", favorite_recipe_path(@recipe), method: :post  %></h3>
 
-			<i class="fa fa-envelope fa-3x" aria-hidden="true"></i><a href="#">Enviar por Email</a>
+			<h3><i class="fa fa-envelope" aria-hidden="true"></i> Enviar para um amigo</h3>
+			<div class="form-group">
+				<%= form_tag(share_recipe_path, method: :post) do  %>
+				<%= label_tag :email, 'Email' %>
+				<%= text_field_tag :email, "", class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= label_tag :message, 'Mensagem' %>
+				<%= text_area_tag :message, "", class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= submit_tag 'Enviar', class: "btn btn-primary float-right" %>
+			</div>
+			<% end %>
 		</div>
 		<div class="col-md-5">
 			<h3>Como Preparar</h3>
 
 			<p><%= @recipe.method %></p>
 		</div>
-	</div>
-		
-	<div>
-		<h3>Enviar para um amigo</h3>
-		<%= form_tag(share_recipe_path, method: :post) do  %>
-			<%= label_tag :email, 'Email' %>
-			<%= text_field_tag :email %>
-			<%= label_tag :message, 'Mensagem' %>
-			<%= text_area_tag :message %>
-			<%= submit_tag 'Enviar' %>
-		<% end %>		
-	</div>
-	<%= link_to "Voltar", root_path, class: "btn btn-primary" %>
-
-	<% if current_user == @recipe.user %>
-		<%= link_to "Editar", edit_recipe_path(@recipe), class: "btn btn-info" %>
-	<% end %>
-
-	<%= link_to "Remover", @recipe, method: :delete, class: "btn btn-danger", data: { confirm: "Tem certeza que deseja remover #{@recipe.title}?" } %>
+	</div>	
 </div>

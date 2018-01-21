@@ -5,30 +5,29 @@ ul {
     margin-bottom: 25px;
     margin-top: 10px;
 }
-
+span {
+    font-weight: bold;
+    font-size: 115%;
+    display: inline
+}
 .search{
 	margin: 7px;
 }
-
 .tipo{
 	margin-top: 20px;
 }
-
-span {
-	font-weight: bold;
-	font-size: 115%;
-}
 .social{
-	margin-left: 15px; 
+	margin-left: 15px;
 }
 .footer {
+    position: relative;
     width: 100%;
-    left: 0;
     bottom: 0;
     background-color: #bcbfc4;
     color: black;
     padding: 15px;
-    border-style: solid;
-    border-width: 3px;
-    border-color: black;
 }
+.star{
+    margin-right: 3px;
+}
+
