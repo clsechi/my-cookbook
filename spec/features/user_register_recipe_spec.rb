@@ -97,4 +97,37 @@ feature 'User register recipe' do
     expect(page).to have_content('Você deve informar todos os dados da receita')
     expect(page).to have_content('Imagem da Receita não é válido')
   end
+
+
+  scenario 'user create recipe as featured' do
+    user = create(:user)
+    create(:cuisine, name: 'Arabe')
+    create(:recipe_type, name: 'Entrada')
+
+    login_as user
+    visit new_recipe_path
+
+    fill_in 'Título', with: 'Tabule'
+    select 'Arabe', from: 'Cozinha'
+    select 'Entrada', from: 'Tipo da Receita'
+    fill_in 'Dificuldade', with: 'Fácil'
+    fill_in 'Tempo de Preparo', with: '45'
+    fill_in 'Ingredientes', with: 'Trigo para quibe, cebola, tomate picado, azeite, salsinha'
+    fill_in 'Como Preparar', with: 'Misturar tudo e servir. Adicione limão a gosto.'
+    page.attach_file('Imagem da Receita', 'spec/support/files/arquivo.jpg')
+    check 'Destaque'
+    click_on 'Enviar'
+
+    expect(page).to have_css('h1', text: 'Tabule')
+    expect(page).to have_css("img[src*='star.png']")
+  end
+
+  scenario 'recipe details show featured' do
+    recipe = create(:recipe, title: 'Tabule', featured: true)
+
+    visit recipe_path(recipe)
+
+    expect(page).to have_css('h1', text: recipe.title)
+    expect(page).to have_css("img[src*='star.png']")
+  end
 end

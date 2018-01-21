@@ -39,5 +39,10 @@
 		<%= f.file_field :photo %>
 	</div>
 
+	<div>
+		<%= f.label :featured, "Destaque" %>
+		<%= f.check_box :featured %>
+	</div>
+
 	<%= f.submit "Enviar" %>
 <% end %>

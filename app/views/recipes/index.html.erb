@@ -11,7 +11,7 @@
 					<%= image_tag recipe.photo.url, class: "img-responsive" %>
 				</div>
 				<div class="col-sm-7 col-md-7">
-					<span><%= link_to recipe.title, recipe_path(recipe.id) %></span>
+					<span><%= image_tag '/images/star.png', class: "img-responsive" if recipe.featured? %><%= link_to recipe.title, recipe_path(recipe.id) %></span>
 					<ul>
 						<li>Tipo: <%= recipe.recipe_type.name%></li>
 						<li>Cozinha: <%= recipe.cuisine.name%></li>
