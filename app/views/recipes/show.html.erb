@@ -41,16 +41,13 @@
 			<div class="form-group">
 				<%= form_tag(share_recipe_path, method: :post) do  %>
 				<%= label_tag :email, 'Email' %>
-				<%= text_field_tag :email, "", class: "form-control" %>
-			</div>
-			<div class="form-group">
+				<%= text_field_tag :email, "", required: true, class: "form-control" %>
 				<%= label_tag :message, 'Mensagem' %>
 				<%= text_area_tag :message, "", class: "form-control" %>
+				<br>
+				<%= submit_tag 'Enviar', class: "btn btn-primary" %>
+				<% end %>
 			</div>
-			<div class="form-group">
-				<%= submit_tag 'Enviar', class: "btn btn-primary float-right" %>
-			</div>
-			<% end %>
 		</div>
 		<div class="col-md-5">
 			<h3>Como Preparar</h3>
