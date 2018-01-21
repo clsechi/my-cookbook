@@ -2,6 +2,10 @@ pt-BR:
   activerecord:
     models:
       cuisine: "Cozinha"
+      recipe: "Receita"
     attributes:
       cuisine:
         name: "Nome"
+      recipe:
+        photo: "Imagem da Receita"
+

@@ -1,3 +1,9 @@
 <h1>CookBook</h1>
-<%= @message %>
+
+<p>Um úsuario do CookBook compartilhou uma receita com você</p>
+
+<p><%= @message %></p>
+
+<p>Clique no link abaixo para visualizar a receita</p>
+
 <%= link_to @recipe.title, recipe_url(@recipe) %>

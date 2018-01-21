@@ -8,7 +8,7 @@
 			<div class="row">
 				<% @recipes.each do |recipe| %>
 				<div class="col-sm-5 col-md-5">
-					<img src="pizza.jpg" class="img-responsive">
+					<%= image_tag recipe.photo.url, class: "img-responsive" %>
 				</div>
 				<div class="col-sm-7 col-md-7">
 					<span><%= link_to recipe.title, recipe_path(recipe.id) %></span>
