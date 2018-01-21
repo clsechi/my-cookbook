@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :recipe do
-    title 'Bolo de Chocolate'
+    #title 'Bolo de Chocolate'
     difficulty 'Fácil'
     ingredients 'Farinha, ovo, manteiga, acucar, chocolate'
     cook_time 60
@@ -8,5 +8,7 @@ FactoryBot.define do
     cuisine
     recipe_type
     user
+
+    sequence(:title) { |n| "bolo#{n}" }
   end
 end
