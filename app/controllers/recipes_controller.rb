@@ -1,8 +1,8 @@
 class RecipesController < ApplicationController
 
-	before_action :set_cuisines_and_types, only: [:show, :new, :edit, :user_favorite, :index]
+	before_action :set_cuisines_and_types, only: [:show, :new, :edit, :favorites, :index]
 
-	before_action :authenticate_user!, only: [:favorite] #:edit
+	before_action :authenticate_user!, only: [:favorite, :new, :destroy] #:edit
 
 	def index
 		@recipes = Recipe.all
@@ -68,10 +68,16 @@ class RecipesController < ApplicationController
 	def favorite
 		recipe = Recipe.find(params[:id])
 		current_user.favorites << recipe
-		redirect_to :favorites
+		redirect_to '/recipes/favorites'
 	end
 
-	def user_favorite
+	def unfavorite
+		@recipe = Recipe.find(params[:id])
+		FavoriteRecipe.find_by(recipe: @recipe, user: current_user).destroy
+    redirect_to @recipe
+	end
+
+	def favorites
 		@favorite_recipes = current_user.favorites
 	end
 

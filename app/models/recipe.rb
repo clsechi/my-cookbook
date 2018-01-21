@@ -14,4 +14,7 @@ class Recipe < ApplicationRecord
 	validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
 	#validates_attachment_file_name :photo, matches: [/png\z/, /jpe?g\z/]
 
+	def editable_by? user
+    self.user == user
+  end
 end

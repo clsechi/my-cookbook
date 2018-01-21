@@ -5,19 +5,18 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :recipes, only: [:show, :new, :create, :edit, :update, :destroy, :index] do
-  	member do 
+  	collection do
+      get 'search'
+      get 'favorites'
+    end 
+    member do 
   		post 'share'
+      post 'favorite'
+      delete 'unfavorite'
   	end
   end
 
   resources :cuisines, only: [:show, :new, :create]
 
   resources :recipe_types, only: [:show, :new, :create]
-
-  get '/search' => 'recipes#search', as: :search_recipe
-
-  post '/favorite/:id' => 'recipes#favorite', as: :favorite_recipe
-
-  get '/favorites' => 'recipes#user_favorite'
-
 end

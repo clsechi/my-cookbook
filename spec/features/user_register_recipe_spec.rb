@@ -39,8 +39,10 @@ feature 'User register recipe' do
 
   scenario 'and must fill in all fields' do
     #cria os dados necessários, nesse caso não vamos criar dados no banco
+    user = create(:user)
     Cuisine.create(name: 'Arabe')
     # simula a ação do usuário
+    login_as user
     visit root_path
     click_on 'Enviar uma receita'
 

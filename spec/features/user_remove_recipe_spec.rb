@@ -14,6 +14,7 @@ feature 'User remove recipe' do
                            cuisine: cuisine, user: user)
 
     #simulate interaction
+    login_as user
     visit root_path
     click_on recipe.title
     click_on 'Remover'
