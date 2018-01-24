@@ -1,7 +1,5 @@
 class RecipeType < ApplicationRecord
+  validates :name, presence: true
 
-	validates :name, presence: true
-
-	has_many :recipes
-	
+  has_many :recipes
 end

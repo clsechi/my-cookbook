@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :favorite_recipes
   has_many :favorites, through: :favorite_recipes, source: :recipe
 
-  def favorited? recipe
-    self.favorites.include? recipe
+  def favorited?(recipe)
+    favorites.include? recipe
   end
 end
