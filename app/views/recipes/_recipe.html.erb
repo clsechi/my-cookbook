@@ -1,12 +1,12 @@
 <div class="col-sm-5 col-md-5">
-	<%= image_tag recipe.photo.url(:medium), size: '130', class: " img-responsive center-block" %>
+  <%= image_tag recipe.photo.url(:medium), size: '130', class: " img-responsive center-block" %>
 </div>
 <div class="col-sm-7 col-md-7 info">
-	<span><%= image_tag '/images/star.png', size: '18', class: "star" if recipe.featured? %><%= link_to recipe.title, recipe_path(recipe.id) %></span>
-	<ul>
-		<li>Tipo: <%= recipe.recipe_type.name%></li>
-		<li>Cozinha: <%= recipe.cuisine.name%></li>
-		<li>Dificuldade: <%= recipe.difficulty %></li>
-		<li>Preparo: <%= recipe.cook_time %> minutos</li>
-	</ul>
+  <span><%= image_tag '/images/star.png', size: '18', class: "star" if recipe.featured? %><%= link_to recipe.title, recipe_path(recipe.id) %></span>
+  <ul>
+    <li>Tipo: <%= recipe.recipe_type.name%></li>
+    <li>Cozinha: <%= recipe.cuisine.name%></li>
+    <li>Dificuldade: <%= recipe.difficulty %></li>
+    <li>Preparo: <%= recipe.cook_time %> minutos</li>
+  </ul>
 </div>

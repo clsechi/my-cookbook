@@ -8,10 +8,7 @@ feature 'User administer your recipes' do
     recipe = create(:recipe, title: 'Bolo de cenoura', recipe_type: recipe_type,
      cuisine: cuisine, user: user)
 
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: user.password
-    click_on 'Login'
+    login_as user
     visit recipe_path(recipe)
 
     expect(page).to have_css('h1', text: recipe.title)
@@ -26,10 +23,7 @@ feature 'User administer your recipes' do
     recipe = create(:recipe, title: 'Bolo de cenoura', recipe_type: recipe_type,
      cuisine: cuisine, user: user)
 
-    visit new_user_session_path
-    fill_in 'Email', with: another_user.email
-    fill_in 'Senha', with: another_user.password
-    click_on 'Login'
+    login_as another_user
     visit recipe_path(recipe)
 
     expect(page).to have_css('h1', text: recipe.title)

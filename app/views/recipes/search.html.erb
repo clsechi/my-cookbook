@@ -1,22 +1,22 @@
 <h1>Resultado da busca por: <%= @recipe_name %></h1>
 
 <% if @recipes.blank? %>
-	
-	<h2>Nenhuma receita encontrada</h2>
+  
+  <h2>Nenhuma receita encontrada</h2>
 
 <% else %> 
 
-	<% @recipes.each do |recipe| %>
+  <% @recipes.each do |recipe| %>
 
-		<h1><%= link_to recipe.title, recipe_path(recipe.id) %></h1>
-		<ul>
-			<li><%= recipe.recipe_type.name%></li>
-			<li><%= recipe.cuisine.name%></li>
-			<li><%= recipe.difficulty %></li>
-			<li><%= recipe.cook_time %> minutos</li>
-		</ul>
+    <h1><%= link_to recipe.title, recipe_path(recipe.id) %></h1>
+    <ul>
+      <li><%= recipe.recipe_type.name%></li>
+      <li><%= recipe.cuisine.name%></li>
+      <li><%= recipe.difficulty %></li>
+      <li><%= recipe.cook_time %> minutos</li>
+    </ul>
 
-	<% end %>
+  <% end %>
 
 <% end %>
 

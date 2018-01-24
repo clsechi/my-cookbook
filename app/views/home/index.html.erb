@@ -1,25 +1,25 @@
 <div class="container">
-	<div class="row">
-		<div class="col-sm-12 col-md-12">
-			<h2 class="text-center">Bem-vindo ao maior livro de receitas online</h2>
-		</div>
-		<%= render partial: "/partials/type_and_cuisine" %>		
-		<div class="col-sm-12 col-md-5 recipes">
-			<h2>Últimas Receitas</h2>
-			<div class="row">
-				<% @recipes.each do |recipe| %>
-					<%= render recipe %> 
-				<% end %>
-				<p class="text-center font-weight-bold"><%= link_to 'Todas as Receitas', recipes_path %></p>
-			</div>		
-		</div>
-		<div class="col-sm-12 col-md-5 favorites">
-			<h2>Favoritas dos Usuários</h2>
-			<div class="row">
-				<% @most_favorites.each do |recipe| %>
-					<%= render recipe %> 
-				<% end %>
-			</div>
-		</div>		
-	</div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12">
+      <h2 class="text-center">Bem-vindo ao maior livro de receitas online</h2>
+    </div>
+    <%= render partial: "/partials/type_and_cuisine" %>   
+    <div class="col-sm-12 col-md-5 recipes">
+      <h2>Últimas Receitas</h2>
+      <div class="row">
+        <% @recipes.each do |recipe| %>
+          <%= render recipe %> 
+        <% end %>
+        <p class="text-center font-weight-bold"><%= link_to 'Todas as Receitas', recipes_path %></p>
+      </div>    
+    </div>
+    <div class="col-sm-12 col-md-5 favorites">
+      <h2>Favoritas dos Usuários</h2>
+      <div class="row">
+        <% @most_favorites.each do |recipe| %>
+          <%= render recipe %> 
+        <% end %>
+      </div>
+    </div>    
+  </div>
 </div>

@@ -1,57 +1,57 @@
 <div class="container">
-	<%= form_for @recipe do |f| %>	
-		<div class="form-row align-items-center">
-			<div class="form-group col-md-12">
-				<%= f.label :title, "Título" %>
-				<%= f.text_field :title, required: true, class: "form-control" %>
-			</div>
-			<div class="form-group col-md-2">
-				<%= f.label :recipe_type_id, "Tipo da Receita" %>
-				<%= f.collection_select :recipe_type_id, @recipe_types, :id, :name, {},class: "form-control" %>
-			</div>
+  <%= form_for @recipe do |f| %>  
+  <div class="form-row align-items-center">
+    <div class="form-group col-md-12">
+      <%= f.label :title, "Título" %>
+      <%= f.text_field :title, required: true, class: "form-control" %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= f.label :recipe_type_id, "Tipo da Receita" %>
+      <%= f.collection_select :recipe_type_id, @recipe_types, :id, :name, {},class: "form-control" %>
+    </div>
 
-			<div class="form-group col-md-2">
-				<%= f.label :cuisine_id, "Cozinha" %>
-				<%= f.collection_select :cuisine_id, @cuisines, :id, :name, {}, class: "form-control" %>
-			</div>
+    <div class="form-group col-md-2">
+      <%= f.label :cuisine_id, "Cozinha" %>
+      <%= f.collection_select :cuisine_id, @cuisines, :id, :name, {}, class: "form-control" %>
+    </div>
 
-			<div class="form-group col-md-3">
-				<%= f.label :difficulty, "Dificuldade" %>
-				<%= f.text_field :difficulty, class: "form-control" %>
-			</div>
+    <div class="form-group col-md-3">
+      <%= f.label :difficulty, "Dificuldade" %>
+      <%= f.text_field :difficulty, class: "form-control" %>
+    </div>
 
-			<div class="form-group col-md-2">
-				<%= f.label :cook_time, "Tempo de Preparo" %>
-				<%= f.number_field :cook_time, class: "form-control" %>
-			</div>
-					
-			<div class="form-group col-md-6">
-				<%= f.label :ingredients, "Ingredientes" %>
-				<%= f.text_area :ingredients, required: true, class: "form-control"%>
-			</div>
+    <div class="form-group col-md-2">
+      <%= f.label :cook_time, "Tempo de Preparo" %>
+      <%= f.number_field :cook_time, class: "form-control" %>
+    </div>
+    
+    <div class="form-group col-md-6">
+      <%= f.label :ingredients, "Ingredientes" %>
+      <%= f.text_area :ingredients, required: true, class: "form-control"%>
+    </div>
 
-			<div class="form-group col-md-6">
-				<%= f.label :method, "Como Preparar" %> 
-				<%= f.text_area :method, required: true, class: "form-control" %>
-			</div>
+    <div class="form-group col-md-6">
+      <%= f.label :method, "Como Preparar" %> 
+      <%= f.text_area :method, required: true, class: "form-control" %>
+    </div>
 
-			<div class="form-group col-md-3">
-				<%= f.label :photo, "Imagem da Receita" %>
-				<%= f.file_field :photo, class: "form-control-file" %>
-			</div>
+    <div class="form-group col-md-3">
+      <%= f.label :photo, "Imagem da Receita" %>
+      <%= f.file_field :photo, class: "form-control-file" %>
+    </div>
 
-			<div class="form-group col-md-2">
-				<div class="form-check">
-					<%= f.check_box :featured, class: "form-check-input" %>					
-					<%= f.label :featured, "Destaque", class: "form-check-label" %>
-					<%= image_tag '/images/star.png', size: '18', class: "star" %>
-				</div>				
-			</div>	
+    <div class="form-group col-md-2">
+      <div class="form-check">
+        <%= f.check_box :featured, class: "form-check-input" %>         
+        <%= f.label :featured, "Destaque", class: "form-check-label" %>
+        <%= image_tag '/images/star.png', size: '18', class: "star" %>
+      </div>        
+    </div>  
 
-			<div class="col-md-2">
-				<%= f.submit "Enviar", class: "btn btn-success" %>	
-			</div>
-		</div>	
-	<% end %>
-	<hr>
+    <div class="col-md-2">
+      <%= f.submit "Enviar", class: "btn btn-success" %>  
+    </div>
+  </div>  
+  <% end %>
+  <hr>
 </div>

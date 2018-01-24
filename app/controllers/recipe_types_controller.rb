@@ -1,10 +1,10 @@
 class RecipeTypesController < ApplicationController
 
+	before_action :set_cuisines_and_types, only: [:show]
+
 	def show
 		@recipe_type = RecipeType.find(params[:id])
 		@recipes = Recipe.where(recipe_type_id: @recipe_type.id)
-		@cuisines = Cuisine.all
-		@recipe_types = RecipeType.all
 	end
 
 	def new
@@ -13,12 +13,8 @@ class RecipeTypesController < ApplicationController
 
 	def create
 		@recipe_type = RecipeType.new recipe_type_params
-		if @recipe_type.valid?
-			if @recipe_type.save
-				redirect_to @recipe_type
-			else
-				puts "erro ao salvar dados"
-			end
+		if @recipe_type.save
+			redirect_to @recipe_type
 		else
 			render :new
 		end
@@ -30,4 +26,8 @@ class RecipeTypesController < ApplicationController
 		params.require(:recipe_type).permit(:name)
 	end
 
+	def set_cuisines_and_types
+		@cuisines = Cuisine.all
+		@recipe_types = RecipeType.all
+	end
 end

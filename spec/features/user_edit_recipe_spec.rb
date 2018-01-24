@@ -19,10 +19,8 @@ feature 'User update recipe' do
                           method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     # simula a ação do usuário
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: user.password
-    click_on 'Login'
+    login_as user
+    visit root_path
     click_on 'Bolodecenoura'
     click_on 'Editar'
 
@@ -64,10 +62,8 @@ feature 'User update recipe' do
                           method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
     # simula a ação do usuário
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Senha', with: user.password
-    click_on 'Login'
+    login_as user
+    visit root_path
     click_on 'Bolodecenoura'
     click_on 'Editar'
 

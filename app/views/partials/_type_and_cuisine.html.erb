@@ -1,14 +1,14 @@
 <div class="col-sm-12 col-md-2 tipo">
-	<span>Cozinha</span>
-	<ul>
-		<% @cuisines.each do |cuisine| %>
-		<li><%= link_to cuisine.name, cuisine_path(cuisine.id) %></li>
-		<% end %>
-	</ul>
-	<span>Tipo</span>
-	<ul>
-		<% @recipe_types.each do |recipe_type| %>
-		<li><%= link_to recipe_type.name, recipe_type_path(recipe_type.id) %></li>
-		<% end %>
-	</ul>
+  <span>Cozinha</span>
+  <ul>
+    <% @cuisines.each do |cuisine| %>
+    <li><%= link_to cuisine.name, cuisine_path(cuisine.id) %></li>
+    <% end %>
+  </ul>
+  <span>Tipo</span>
+  <ul>
+    <% @recipe_types.each do |recipe_type| %>
+    <li><%= link_to recipe_type.name, recipe_type_path(recipe_type.id) %></li>
+    <% end %>
+  </ul>
 </div>

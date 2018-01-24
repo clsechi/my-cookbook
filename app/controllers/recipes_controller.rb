@@ -2,6 +2,8 @@ class RecipesController < ApplicationController
 
 	before_action :set_cuisines_and_types, only: [:show, :new, :edit, :favorites, :index]
 
+  before_action :set_recipe, only: [:show, :update, :destroy, :favorite, :unfavorite, :share] #:edit
+
 	before_action :authenticate_user!, only: [:favorite, :new, :destroy] #:edit
 
 	def index
@@ -9,7 +11,6 @@ class RecipesController < ApplicationController
 	end
 
 	def show
-		@recipe = Recipe.find(params[:id])
 	end
 
 	def new 
@@ -21,8 +22,6 @@ class RecipesController < ApplicationController
 		@recipe.user = current_user	
 		if @recipe.save
 			redirect_to @recipe
-		elsif @recipe.valid?
-			puts "erro ao salvar os dados"
 		else
 			set_cuisines_and_types
 			render :new
@@ -39,11 +38,8 @@ class RecipesController < ApplicationController
 	end
 
 	def update
-		@recipe = Recipe.find(params[:id])
 		if @recipe.update recipe_params
 			redirect_to @recipe
-		elsif @recipe.valid?
-			puts "erro ao salvar os dados"
 		else			
 			set_cuisines_and_types
 			render :new
@@ -56,23 +52,18 @@ class RecipesController < ApplicationController
 	end
 
 	def destroy
-		recipe = Recipe.find(params[:id])
-		if recipe.destroy
+		if @recipe.destroy
 			redirect_to root_path
 			flash[:notice] = 'Receita removida com sucesso'
-		else
-			puts "erro ao deletar dados"
 		end
 	end
 
 	def favorite
-		recipe = Recipe.find(params[:id])
-		current_user.favorites << recipe
+		current_user.favorites << @recipe
 		redirect_to '/recipes/favorites'
 	end
 
 	def unfavorite
-		@recipe = Recipe.find(params[:id])
 		FavoriteRecipe.find_by(recipe: @recipe, user: current_user).destroy
     redirect_to @recipe
 	end
@@ -82,13 +73,11 @@ class RecipesController < ApplicationController
 	end
 
 	def share
-		@recipe = Recipe.find(params[:id])
     email = params[:email]
     msg = params[:message]
 
     #chama funcao do mailer que trata os parametros
-    RecipesMailer.share(email, msg,
-                        @recipe.id).deliver_now
+    RecipesMailer.share(email, msg, @recipe.id).deliver_now
 
     flash[:notice] = "Receita enviada para #{email}"
     redirect_to @recipe
@@ -105,4 +94,7 @@ class RecipesController < ApplicationController
 		@recipe_types = RecipeType.all
 	end
 
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
 end

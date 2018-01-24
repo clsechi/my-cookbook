@@ -93,4 +93,40 @@ feature 'Visitor visit homepage' do
     end
     expect(page).not_to have_css('favorites#span', text: do_not_show_recipe.title)
   end
+
+  scenario 'see all recipes' do
+    user = create(:user)
+    cuisine = create(:cuisine, name: 'Brasileira')
+    recipe_type = create(:recipe_type, name: 'Sobremesa')
+    
+    recipes = create_list(:recipe, 7, recipe_type: recipe_type, cuisine: cuisine, user: user)
+    
+    visit root_path
+    click_on "Todas as Receitas"
+
+    expect(page).to have_css('h1', text: 'Receitas')
+
+    recipes.each do |recipe|
+      expect(page).to have_content(recipe.title)
+    end
+  end
+
+  scenario 'see last recipes' do
+    user = create(:user)
+    cuisine = create(:cuisine, name: 'Brasileira')
+    recipe_type = create(:recipe_type, name: 'Sobremesa')
+   
+    not_show_recipe = create(:recipe, title: 'Miojo', recipe_type: recipe_type, cuisine: cuisine, user: user)
+    recipes = create_list(:recipe, 6, recipe_type: recipe_type, cuisine: cuisine, user: user)
+
+    visit root_path
+
+    expect(page).to have_css('h2', text: 'Últimas Receitas')
+
+    recipes.each do |recipe|
+      expect(page).to have_content(recipe.title)
+    end
+   
+    expect(page).not_to have_content(not_show_recipe.title)
+  end
 end

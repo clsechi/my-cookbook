@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 feature 'User remove recipe' do
-	scenario 'successfully' do
-	#create data
+  scenario 'successfully' do
+  #create data
     user = create(:user)
-	cuisine = create(:cuisine, name: 'Paulista')
+  cuisine = create(:cuisine, name: 'Paulista')
     recipe_type = create(:recipe_type, name: 'Massa')
 
     recipe = create(:recipe, title: 'Miojo', recipe_type: recipe_type,
@@ -23,5 +23,5 @@ feature 'User remove recipe' do
     expect(page).not_to have_content(recipe.title)
     expect(page).to have_content(another_recipe.title)
     expect(page).to have_content('Receita removida com sucesso')
-	end
+  end
 end
