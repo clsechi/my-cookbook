@@ -30,6 +30,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    # alterar
     if current_user
       @recipe = Recipe.find(params[:id])
       render :edit
@@ -43,7 +44,7 @@ class RecipesController < ApplicationController
       redirect_to @recipe
     else
       set_cuisines_and_types
-      render :new
+      render :edit
     end
   end
 
