@@ -20,6 +20,19 @@ class RecipeTypesController < ApplicationController
     end
   end
 
+  def edit
+    @recipe_type = RecipeType.find(params[:id])
+  end
+
+  def update
+    @recipe_type = RecipeType.find(params[:id])
+    if @recipe_type.update recipe_type_params
+      redirect_to @recipe_type
+    else
+      render :edit
+    end
+  end
+
   private
 
   def recipe_type_params
