@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_cuisines_and_types, only: [:show, :new, :edit, :favorites, :index]
 
-  before_action :set_recipe, only: [:show, :update, :destroy, :favorite, :unfavorite, :share] #:edit
+  before_action :set_recipe, only: [:update, :destroy, :favorite, :unfavorite, :share] #:edit
 
   before_action :authenticate_user!, only: [:favorite, :new, :destroy] #:edit
 
@@ -10,6 +10,8 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
+    # @recipe.ingredients = @recipe.ingredients.split(',')
   end
 
   def new

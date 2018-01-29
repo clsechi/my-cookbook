@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User register recipe_jype' do
+feature 'User register recipe_type' do
   scenario 'successfully' do
 
     visit new_recipe_type_path
@@ -17,5 +17,15 @@ feature 'User register recipe_jype' do
     click_on 'Enviar'
 
     expect(page).to have_content('Você deve informar o nome do tipo de receita')
+  end
+
+  scenario 'do not register duplicated type' do
+    create(:recipe_type, name: 'Sobremesa')
+
+    visit new_recipe_type_path
+    fill_in 'Nome', with: 'Sobremesa'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Tipo da Receita já está em uso')
   end
 end

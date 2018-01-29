@@ -18,4 +18,14 @@ feature 'User register cuisine' do
 
     expect(page).to have_content('Você deve informar o nome da cozinha')
   end
+
+  scenario 'do not register duplicated cuisine' do
+    create(:cuisine, name: 'Brasileira')
+
+    visit new_cuisine_path
+    fill_in 'Nome', with: 'Brasileira'
+    click_on 'Enviar'
+
+    expect(page).to have_content('Nome da Cozinha já está em uso')
+  end
 end

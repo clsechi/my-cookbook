@@ -5,7 +5,9 @@ pt-BR:
       recipe: "Receita"
     attributes:
       cuisine:
-        name: "Nome"
+        name: "Nome da Cozinha"
       recipe:
         photo: "Imagem da Receita"
+      recipe_type:
+        name: "Tipo da Receita"
 
