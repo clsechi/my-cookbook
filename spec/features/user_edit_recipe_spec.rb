@@ -35,12 +35,12 @@ feature 'User update recipe' do
     click_on 'Enviar'
 
     expect(page).to have_css('h1', text: 'Bolo de cenoura')
-    expect(page).to have_css('h3', text: 'Detalhes')
+    expect(page).to have_css('h5', text: 'Detalhes')
     expect(page).to have_css('p', text: 'Sobremesa')
     expect(page).to have_css('p', text: 'Brasileira')
     expect(page).to have_css('p', text: 'Médio')
     expect(page).to have_css('p', text: '45 minutos')
-    expect(page).to have_css('p', text:  'Cenoura, farinha, ovo, oleo de soja e chocolate')
+    expect(page).to have_css('li', text:  'Cenoura, farinha, ovo, oleo de soja e chocolate')
     expect(page).to have_css('p', text: 'Faça um bolo e uma cobertura de chocolate')
   end
 

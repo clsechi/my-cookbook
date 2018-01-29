@@ -26,12 +26,12 @@ feature 'Visitor search for recipes' do
     click_on 'Buscar'
 
     # expectativas do usuário após a ação
-    expect(page).to have_css('h1', text: 'Resultado da busca por: Bolo de cenoura')
-    expect(page).to have_css('h1', text: recipe.title)
-    expect(page).to have_css('li', text: recipe.recipe_type.name)
-    expect(page).to have_css('li', text: recipe.cuisine.name)
-    expect(page).to have_css('li', text: recipe.difficulty)
-    expect(page).to have_css('li', text: "#{recipe.cook_time} minutos")
+    expect(page).to have_css('h2', text: 'Resultado da busca por: Bolo de cenoura')
+    expect(page).to have_css('h3', text: recipe.title)
+    expect(page).to have_css('p', text: recipe.recipe_type.name)
+    expect(page).to have_css('p', text: recipe.cuisine.name)
+    expect(page).to have_css('p', text: recipe.difficulty)
+    expect(page).to have_css('p', text: "#{recipe.cook_time} minutos")
     expect(page).not_to have_css('h1', text: another_recipe.title)
   end
 

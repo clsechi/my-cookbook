@@ -1,26 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-12">
-      <h1>Receitas</h1>
+<div class="dishes padd">
+  <div class="container">
+    <!-- Default Heading -->
+    <div class="default-heading">
+      <!-- Crown image -->
+      <img class="img-responsive" src="/img/crown.png" alt="" />
+      <!-- Heading -->
+      <h2>Receitas</h2>
+
+      <p>Todas as receitas do CookBook</p>
+      <!-- Border -->
+      <div class="border"></div>
     </div>
-    <%= render partial: "/partials/type_and_cuisine" %> 
-    <div class="col-md-10">
-      <div class="row">
-        <% @recipes.each do |recipe| %>
-        <div class="col-sm-5 col-md-5">
-          <%= image_tag recipe.photo.url, class: "img-responsive" %>
-        </div>
-        <div class="col-sm-7 col-md-7">
-          <span><%= image_tag '/images/star.png', class: "img-responsive" if recipe.featured? %><%= link_to recipe.title, recipe_path(recipe.id) %></span>
-          <ul>
-            <li>Tipo: <%= recipe.recipe_type.name%></li>
-            <li>Cozinha: <%= recipe.cuisine.name%></li>
-            <li>Dificuldade: <%= recipe.difficulty %></li>
-            <li>Preparo: <%= recipe.cook_time %> minutos</li>
-          </ul>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+    <div class="row">
+      <% @recipes.each do |recipe| %>
+      <%= render recipe %>
+      <% end %>
+    </div>    
+  </div>          
 </div>
+<%= render partial: "/partials/type_and_cuisine" %> 

@@ -1,20 +1,32 @@
-<% if @cuisine.errors.any? %>
-<h3>Você deve informar o nome da cozinha</h3>
-<% end %>
+<div class="container padd"> 
 
-<% @cuisine.errors.full_messages.each do |msg| %>
-<div class="alert alert-danger">
-  <%= msg %>
+  <% if @cuisine.errors.any? %>
+  <div >
+    <h4 class="alert alert-danger"><%= @cuisine.errors.full_messages %></h4>
+    <h4 class="alert alert-danger">Você deve informar o nome da cozinha</h4>
+  </div>
+  <% end %>
+
+  <!-- Default Heading -->
+  <div class="default-heading">
+    <!-- Crown image -->
+    <img class="img-responsive" src="/img/crown.png" alt="" />
+    <!-- Heading -->
+    <h2>Criar nova cozinha</h2>
+
+    <p>Preencha o nome da cozinha e clique em enviar</p>
+    <!-- Border -->
+    <div class="border"></div>
+  </div>
+
+  <%= form_for @cuisine, :html => {class: 'form-inline'} do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, "Nome" %>
+    <%= f.text_field :name, required: true, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Enviar", class: 'btn btn-success' %>
+
+  <% end %>
 </div>
-<% end %>
-
-<%= form_for @cuisine do |f| %>
-
-<div>
-  <%= f.label :name, "Nome" %>
-  <%= f.text_field :name, required: true %>
-</div>
-
-<%= f.submit "Enviar" %>
-
-<% end %>

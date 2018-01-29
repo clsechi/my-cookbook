@@ -1,25 +1,56 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-12">
-      <h2 class="text-center">Bem-vindo ao maior livro de receitas online</h2>
-    </div>
-    <%= render partial: "/partials/type_and_cuisine" %>   
-    <div class="col-sm-12 col-md-5 recipes">
-      <h2>Últimas Receitas</h2>
+<!-- Main Content -->
+<div class="main-content">
+
+  <%= render partial: "/partials/type_and_cuisine" %> 
+
+  <!-- Recipes Start -->
+
+  <div class="dishes padd">
+    <div class="container">
+      <!-- Default Heading -->
+      <div class="default-heading">
+        <!-- Crown image -->
+        <img class="img-responsive" src="/img/crown.png" alt="" />
+        <!-- Heading -->
+        <h2>Últimas Receitas</h2>
+        <!-- Paragraph -->
+        <p>Essas receitas acabaram de entrar no CookBook</p>
+        <!-- Border -->
+        <div class="border"></div>
+      </div>
       <div class="row">
         <% @recipes.each do |recipe| %>
-          <%= render recipe %> 
-        <% end %>
-        <p class="text-center font-weight-bold"><%= link_to 'Todas as Receitas', recipes_path %></p>
-      </div>    
-    </div>
-    <div class="col-sm-12 col-md-5 favorites">
-      <h2>Favoritas dos Usuários</h2>
-      <div class="row">
-        <% @most_favorites.each do |recipe| %>
-          <%= render recipe %> 
+        <%= render recipe %>
         <% end %>
       </div>
-    </div>    
+      <div class="text-center">
+        <%= link_to 'Todas as Receitas', recipes_path, class: "dish-all btn btn-primary btn-lg" %>  
+      </div>      
+    </div>          
   </div>
+
+  <!-- <Recipes End -->
+
+  <!-- Favorites Start -->
+
+  <div class="dishes padd">
+    <div class="container">
+      <!-- Default Heading -->
+      <div class="default-heading">
+        <!-- Crown image -->
+        <img class="img-responsive" src="/img/crown.png" alt="" />
+        <!-- Heading -->
+        <h2>Favoritas dos Usuários</h2>
+        <!-- Paragraph -->
+        <p>Últimas receitas favoritadas pelos usuários</p>
+        <!-- Border -->
+        <div class="border"></div>
+      </div>
+      <div class="row favorites">
+        <% @most_favorites.each do |recipe| %>
+        <%= render recipe %>
+        <% end %>
+      </div>
+    </div>          
+  </div>        
 </div>

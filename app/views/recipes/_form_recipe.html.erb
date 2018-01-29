@@ -1,4 +1,23 @@
-<div class="container">
+<% if @recipe.errors.any? %>
+<div >
+  <h4 class="alert alert-danger"><%= @recipe.errors.full_messages %></h4>
+  <h4 class="alert alert-danger">Você deve informar todos os dados da receita</h4>
+</div>
+<% end %>
+
+<div class="container padd">
+
+  <div class="default-heading">
+    <!-- Crown image -->
+    <img class="img-responsive" src="/img/crown.png" alt="" />
+    <!-- Heading -->
+    <h2><%= main_title %></h2>
+    <!-- Paragraph -->
+    <p><%= sub_title %></p>
+    <!-- Border -->
+    <div class="border"></div>
+  </div>
+
   <%= form_for @recipe do |f| %>  
   <div class="form-row align-items-center">
     <div class="form-group col-md-12">
@@ -24,7 +43,7 @@
       <%= f.label :cook_time, "Tempo de Preparo" %>
       <%= f.number_field :cook_time, class: "form-control" %>
     </div>
-    
+
     <div class="form-group col-md-6">
       <%= f.label :ingredients, "Ingredientes" %>
       <%= f.text_area :ingredients, required: true, class: "form-control"%>
@@ -44,7 +63,7 @@
       <div class="form-check">
         <%= f.check_box :featured, class: "form-check-input" %>         
         <%= f.label :featured, "Destaque", class: "form-check-label" %>
-        <%= image_tag '/images/star.png', size: '18', class: "star" %>
+        <%= image_tag '/img/star.png', size: '18', class: "star" %>
       </div>        
     </div>  
 
@@ -54,4 +73,5 @@
   </div>  
   <% end %>
   <hr>
+
 </div>

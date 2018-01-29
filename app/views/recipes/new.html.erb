@@ -1,8 +1,1 @@
-<% if @recipe.errors.any? %>
-<div >
-  <h4 class="alert alert-danger"><%= @recipe.errors.full_messages %></h4>
-  <h4 class="alert alert-danger">Você deve informar todos os dados da receita</h4>
-</div>  
-<% end %>
-
-<%= render partial: 'form_recipe' %>
+<%= render partial: 'form_recipe', locals: { main_title: 'Enviar uma nova receita', sub_title: 'Preencha os campos e clique em enviar'} %>

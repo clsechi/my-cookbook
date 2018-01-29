@@ -20,12 +20,12 @@ feature 'Visitor view recipes by type' do
     click_on recipe_type.name
 
     # expectativas do usuário após a ação
-    expect(page).to have_css('h1', text: recipe_type.name)
-    expect(page).to have_css('span', text: recipe.title)
-    expect(page).to have_css('li', text: recipe.recipe_type.name)
-    expect(page).to have_css('li', text: recipe.cuisine.name)
-    expect(page).to have_css('li', text: recipe.difficulty)
-    expect(page).to have_css('li', text: "#{recipe.cook_time} minutos")
+    expect(page).to have_css('h2', text: recipe_type.name)
+    expect(page).to have_css('h3', text: recipe.title)
+    expect(page).to have_css('p', text: recipe.recipe_type.name)
+    expect(page).to have_css('p', text: recipe.cuisine.name)
+    expect(page).to have_css('p', text: recipe.difficulty)
+    expect(page).to have_css('p', text: "#{recipe.cook_time} minutos")
   end
 
   scenario 'and view only recipes from same type' do
@@ -50,18 +50,17 @@ feature 'Visitor view recipes by type' do
     click_on main_recipe_type.name
 
     # expectativas do usuário após a ação
-    within('div.info') do
-      expect(page).to have_css('span', text: main_recipe.title)
-      expect(page).to have_css('li', text: main_recipe.recipe_type.name)
-      expect(page).to have_css('li', text: main_recipe.cuisine.name)
-      expect(page).to have_css('li', text: main_recipe.difficulty)
-      expect(page).to have_css('li', text: "#{main_recipe.cook_time} minutos")
-      expect(page).not_to have_css('li', text: dessert_recipe.title)
-      expect(page).not_to have_css('li', text: dessert_recipe.recipe_type.name)
-      expect(page).not_to have_css('li', text: dessert_recipe.cuisine.name)
-      expect(page).not_to have_css('li', text: dessert_recipe.difficulty)
-      expect(page).not_to have_css('li', text: "#{dessert_recipe.cook_time} minutos")
-    end
+    expect(page).to have_css('h3', text: main_recipe.title)
+    expect(page).to have_css('p', text: main_recipe.recipe_type.name)
+    expect(page).to have_css('p', text: main_recipe.cuisine.name)
+    expect(page).to have_css('p', text: main_recipe.difficulty)
+    expect(page).to have_css('p', text: "#{main_recipe.cook_time} minutos")
+    expect(page).not_to have_css('p', text: dessert_recipe.title)
+    expect(page).not_to have_css('p', text: dessert_recipe.recipe_type.name)
+    expect(page).not_to have_css('p', text: dessert_recipe.cuisine.name)
+    expect(page).not_to have_css('p', text: dessert_recipe.difficulty)
+    expect(page).not_to have_css('p', text: "#{dessert_recipe.cook_time} minutos")
+
   end
 
   scenario 'and type has no recipe' do

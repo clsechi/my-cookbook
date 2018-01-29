@@ -1,20 +1,32 @@
-<% if @recipe_type.errors.any? %>
-<h3>Você deve informar o nome do tipo de receita</h3>
-<% end %>
+<div class="container padd"> 
 
-<% @recipe_type.errors.full_messages.each do |msg| %>
-<div class="alert alert-danger">
-  <%= msg %>
+  <% if @recipe_type.errors.any? %>
+  <div >
+    <h4 class="alert alert-danger"><%= @recipe_type.errors.full_messages %></h4>
+    <h4 class="alert alert-danger">Você deve informar o nome do tipo de receita</h4>
+  </div>
+  <% end %>
+
+  <!-- Default Heading -->
+  <div class="default-heading">
+    <!-- Crown image -->
+    <img class="img-responsive" src="/img/crown.png" alt="" />
+    <!-- Heading -->
+    <h2>Criar novo tipo de receita</h2>
+
+    <p>Preencha o nome do tipo de receita e clique em enviar</p>
+    <!-- Border -->
+    <div class="border"></div>
+  </div>
+
+  <%= form_for @recipe_type, :html => {class: 'form-inline'} do |f| %>
+
+  <div class="form-group">
+    <%= f.label :name, "Nome" %>
+    <%= f.text_field :name, required: true, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Enviar", class: 'btn btn-success' %>
+
+  <% end %>
 </div>
-<% end %>
-
-<%= form_for @recipe_type do |f| %>
-
-<div>
-  <%= f.label :name, "Nome" %>
-  <%= f.text_field :name, required: true %>
-</div>
-
-<%= f.submit "Enviar" %>
-
-<% end %>

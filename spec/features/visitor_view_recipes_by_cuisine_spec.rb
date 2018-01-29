@@ -19,12 +19,12 @@ feature 'Visitor view recipes by cuisine' do
     click_on cuisine.name
 
     # expectativas do usuário após a ação
-    expect(page).to have_css('h1', text: cuisine.name)
-    expect(page).to have_css('span', text: recipe.title)
-    expect(page).to have_css('li', text: recipe.recipe_type.name)
-    expect(page).to have_css('li', text: recipe.cuisine.name)
-    expect(page).to have_css('li', text: recipe.difficulty)
-    expect(page).to have_css('li', text: "#{recipe.cook_time} minutos")
+    expect(page).to have_css('h2', text: cuisine.name)
+    expect(page).to have_css('h3', text: recipe.title)
+    expect(page).to have_css('p', text: recipe.recipe_type.name)
+    expect(page).to have_css('p', text: recipe.cuisine.name)
+    expect(page).to have_css('p', text: recipe.difficulty)
+    expect(page).to have_css('p', text: "#{recipe.cook_time} minutos")
   end
 
   scenario 'and view only cuisine recipes' do
@@ -49,11 +49,11 @@ feature 'Visitor view recipes by cuisine' do
     click_on italian_cuisine.name
 
     # expectativas do usuário após a ação
-    expect(page).to have_css('span', text: italian_recipe.title)
-    expect(page).to have_css('li', text: italian_recipe.recipe_type.name)
-    expect(page).to have_css('li', text: italian_recipe.cuisine.name)
-    expect(page).to have_css('li', text: italian_recipe.difficulty)
-    expect(page).to have_css('li', text: "#{italian_recipe.cook_time} minutos")
+    expect(page).to have_css('h3', text: italian_recipe.title)
+    expect(page).to have_css('p', text: italian_recipe.recipe_type.name)
+    expect(page).to have_css('p', text: italian_recipe.cuisine.name)
+    expect(page).to have_css('p', text: italian_recipe.difficulty)
+    expect(page).to have_css('p', text: "#{italian_recipe.cook_time} minutos")
   end
 
   scenario 'and cuisine has no recipe' do

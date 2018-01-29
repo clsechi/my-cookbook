@@ -1,7 +1,9 @@
-<%= form_tag("/recipes/search", method: "get") do %>
-  <div class="form-inline search">
-    <%= label_tag :busca, "Busca", class: ""  %>
-    <%= text_field_tag :busca, nil,  class: "form-control" %>
-    <%= submit_tag "Buscar" , class: "btn btn-primary" %>
-  </div>
-<% end %>
+<div class="col-md-6 col-sm-12">
+  <%= form_tag("/recipes/search", method: "get") do %>
+    <div class="form-inline">
+      <%= label_tag :busca, "Busca", class: ""  %>
+      <%= text_field_tag :busca, nil, required: true,  class: "form-control" %>
+      <%= submit_tag "Buscar" , class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

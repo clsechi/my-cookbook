@@ -1,23 +1,28 @@
-<div class="container">
-  <div class="row">
-    <%= render partial: "/partials/type_and_cuisine" %>
-    <div class="col-md-10">
-      <h1><%= @cuisine.name %></h1>
+<div class="dishes padd">
+  <div class="container">
+    <!-- Default Heading -->
+    <div class="default-heading">
+      <!-- Crown image -->
+      <img class="img-responsive" src="/img/crown.png" alt="" />
+      <!-- Heading -->
+      <h2><%= @cuisine.name %></h2>
 
-      <% if !@recipes.blank? %>
+      <p>Todas as receitas dessa cozinha</p>
+      <!-- Border -->
+      <div class="border"></div>
+    </div>
 
+    <% if !@recipes.blank? %>
+
+    <div class="row">
       <% @recipes.each do |recipe| %>
-
-        <%= render recipe %>
-
-      <% end %>
-
-      <% else %>
-
-      <h3>Nenhuma receita encontrada para este tipo de cozinha</h3>
-
+      <%= render recipe %>
       <% end %>
     </div>
-  </div>
-</div>
+    <% else %>
 
+    <h3 class="text-center">Nenhuma receita encontrada para este tipo de cozinha</h3>
+
+    <% end %>    
+  </div>          
+</div>

@@ -1,12 +1,26 @@
-<div class="col-sm-5 col-md-5">
-  <%= image_tag recipe.photo.url(:medium), size: '130', class: " img-responsive center-block" %>
-</div>
-<div class="col-sm-7 col-md-7 info">
-  <span><%= image_tag '/images/star.png', size: '18', class: "star" if recipe.featured? %><%= link_to recipe.title, recipe_path(recipe.id) %></span>
-  <ul>
-    <li>Tipo: <%= recipe.recipe_type.name%></li>
-    <li>Cozinha: <%= recipe.cuisine.name%></li>
-    <li>Dificuldade: <%= recipe.difficulty %></li>
-    <li>Preparo: <%= recipe.cook_time %> minutos</li>
-  </ul>
+<div class="col-md-4 col-sm-6"> 
+  <div class="dishes-item-container">
+    <!-- Image Frame -->
+    <div class="img-frame">
+      <!-- Image -->
+      <%= image_tag recipe.photo.url, class: " img-responsive" %>
+      <!-- Block for on hover effect to image -->
+      <div class="img-frame-hover">
+        <!-- Hover Icon -->
+        <a href= <%= recipe_path(recipe.id) %>><i class="fa fa-cutlery"></i></a>
+      </div>
+    </div>
+    <!-- Dish Details -->
+    <div class="dish-details">
+      <!-- Heading -->
+      <h3><%= image_tag '/img/star.png', size: '18', class: "star" if recipe.featured? %><%= link_to recipe.title, recipe_path(recipe.id) %></h3>
+      <!-- Paragraph -->
+      <p>Tipo: <%= recipe.recipe_type.name%></p>
+      <p>Cozinha: <%= recipe.cuisine.name%></p>
+      <p>Dificuldade: <%= recipe.difficulty %></p>
+      <p>Preparo: <%= recipe.cook_time %> minutos</p>
+      <!-- Button -->
+      <%= link_to "Saiba mais", recipe_path(recipe.id), class: "btn btn-danger btn-sm" %>
+    </div>
+  </div>
 </div>

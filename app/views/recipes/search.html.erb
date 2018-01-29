@@ -1,23 +1,27 @@
-<h1>Resultado da busca por: <%= @recipe_name %></h1>
+<div class="dishes padd">
+  <div class="container">
+    <!-- Default Heading -->
+    <div class="default-heading">
+      <!-- Crown image -->
+      <img class="img-responsive" src="/img/crown.png" alt="" />
+      <!-- Heading -->
+      <h2>Resultado da busca por: <%= @recipe_name %></h2>
 
-<% if @recipes.blank? %>
-  
-  <h2>Nenhuma receita encontrada</h2>
+      <p>Receitas encontradas</p>
+      <!-- Border -->
+      <div class="border"></div>
 
-<% else %> 
+      <%= link_to "Voltar", root_path, class: "btn btn-primary pull-left" %>
+    </div>
+    <div class="row">
+      <% if @recipes.blank? %>
+        <h2>Nenhuma receita encontrada</h2>
+      <% else %>
+        <% @recipes.each do |recipe| %>
+        <%= render recipe %>
+        <% end %>
+      <% end %>
+    </div>    
+  </div>          
+</div>
 
-  <% @recipes.each do |recipe| %>
-
-    <h1><%= link_to recipe.title, recipe_path(recipe.id) %></h1>
-    <ul>
-      <li><%= recipe.recipe_type.name%></li>
-      <li><%= recipe.cuisine.name%></li>
-      <li><%= recipe.difficulty %></li>
-      <li><%= recipe.cook_time %> minutos</li>
-    </ul>
-
-  <% end %>
-
-<% end %>
-
-<%= link_to "Voltar", root_path %>

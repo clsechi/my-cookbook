@@ -1,14 +1,62 @@
-<div class="col-sm-12 col-md-2 tipo">
-  <span>Cozinha</span>
-  <ul>
-    <% @cuisines.each do |cuisine| %>
-    <li><%= link_to cuisine.name, cuisine_path(cuisine.id) %></li>
-    <% end %>
-  </ul>
-  <span>Tipo</span>
-  <ul>
-    <% @recipe_types.each do |recipe_type| %>
-    <li><%= link_to recipe_type.name, recipe_type_path(recipe_type.id) %></li>
-    <% end %>
-  </ul>
+<!-- menu Start -->
+<div class="menu padd">
+  <div class="container">           
+    <!-- Menu content container -->
+    <div class="menu-container">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4 col-sm-4">
+          <!-- Menu header -->
+          <div class="menu-head">
+            <!-- Image for menu item -->
+            <img class="menu-img img-responsive img-thumbnail" src="/img/menu/menu1.jpg" alt="" />
+            <!-- Menu title / Heading -->
+            <h3>Cozinhas</h3>
+            <!-- Border for above heading -->
+            <div class="title-border br-red"></div>
+          </div>
+          <!-- Menu item details -->
+          <div class="menu-details br-red">
+            <!-- Menu list -->
+            <ul class="list-unstyled">
+              <% @cuisines.each do |cuisine| %>    
+              <li>
+                <div class="menu-list-item">
+                  <!-- Icon -->
+                  <i class="fa fa-angle-right"></i><%= link_to cuisine.name, cuisine_path(cuisine.id) %>
+                </div>
+                <% end %>
+              </li>
+            </ul>
+          </div><!-- / Menu details end -->
+        </div>
+        <div class="col-md-4 col-sm-4">
+          <!-- Menu header -->
+          <div class="menu-head">
+            <!-- Image for menu item -->
+            <img class="menu-img img-responsive img-thumbnail" src="/img/menu/menu2.jpg" alt="" />
+            <!-- Menu title / Heading -->
+            <h3>Tipos</h3>
+            <!-- Border for above heading -->
+            <div class="title-border br-green"></div>
+          </div>
+          <!-- Menu item details -->
+          <div class="menu-details br-green">
+            <!-- Menu list -->
+            <ul class="list-unstyled">
+              <% @recipe_types.each do |recipe_type| %>
+              <li>
+                <div class="menu-list-item">
+                  <!-- Icon -->
+                  <i class="fa fa-angle-right"></i><%= link_to recipe_type.name, recipe_type_path(recipe_type.id) %>
+                </div>
+              </li>
+              <% end %>
+            </ul>
+          </div><!-- / Menu details end -->
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div> <!-- /Menu container end -->
+  </div>
 </div>
