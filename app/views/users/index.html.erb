@@ -1,0 +1,9 @@
+<h1>Usuários do CookBook</h1>
+
+<% @users.each do |user| %>
+  <p>Nome: <%= link_to user.name, user_recipes_path(user) %></p>
+  <p>Email: <%= user.email %></p>
+  <p>Cidade: <%= user.city %></p>
+  <p>Receitas cadastradas: <%= user.recipes_quant %> </p>
+  <hr>
+<% end %>

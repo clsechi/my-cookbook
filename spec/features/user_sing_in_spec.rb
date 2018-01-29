@@ -27,4 +27,22 @@ feature 'User sign in' do
     expect(page).not_to have_content("Bem-vindo #{user.email}")
     expect(page).to have_button('Entrar')
   end
+
+  scenario 'and edit profile' do
+    user = create(:user)
+
+    login_as(user)
+    visit edit_user_path(user)
+    fill_in 'Nome', with: 'Romario'
+    fill_in 'Cidade', with: 'Ibiza'
+    fill_in 'E-mail', with: 'romario@google.com'
+    #fill_in 'Senha', with: user.password
+    fill_in 'Facebook', with: 'facebook.com/romario1'
+    click_on 'Enviar'
+
+    expect(page).to have_css('p', text: 'Romario')
+    expect(page).to have_css('p', text: 'Ibiza')
+    expect(page).to have_css('p', text: 'romario@google.com')
+    expect(page).to have_css('p', text: 'facebook.com/romario1')
+  end
 end

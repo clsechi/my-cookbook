@@ -10,4 +10,16 @@ class User < ApplicationRecord
   def favorited?(recipe)
     favorites.include? recipe
   end
+
+  def editable_by?(user)
+    id == user.id
+  end
+
+  def recipes_quant
+    Recipe.where('user_id = ?', "#{id}").size
+  end
+
+  def recipes
+    Recipe.where('user_id = ?', "#{id}")
+  end
 end

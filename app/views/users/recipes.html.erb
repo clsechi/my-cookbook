@@ -1,0 +1,9 @@
+<h1>Receitas de <%= @user.name %></h1>
+
+<% if @user.recipes.blank? %>  
+  <p>Esse usuário não possui receitas cadastradas</p>
+<% else %>
+  <% @user.recipes.each do |rec| %>
+    <p><%= link_to rec.title, recipe_path(rec) %></p>
+  <% end %>
+<% end %>

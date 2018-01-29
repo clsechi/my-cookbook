@@ -32,7 +32,8 @@
             <div class="login">
               <div class="col-md-5 col-sm-3">
               <% if user_signed_in? %>
-              <p class="text-center"><strong>Bem-vindo <%= current_user.email %></strong></p>
+              <p class="text-center"><strong>Bem-vindo <%=
+              link_to current_user.email, edit_user_path(current_user)%></strong></p>
             </div>
             <div class="col-md-1 col-sm-2">            
               <%= button_to "Sair", destroy_user_session_path, :method => :delete, class: "btn btn-danger pull-right" %>
@@ -75,7 +76,10 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav text-center">
                     <li><i class="fa fa-home fa-3x"></i><a href="/">Home</a></li>
-                    <li><i class="fa fa-bookmark fa-3x"></i><a href="/recipes">Minhas Receitas</a></li>
+                    <% if user_signed_in? %>
+                    <li><i class="fa fa-bookmark fa-3x"></i><%= link_to 'Minhas Receitas', user_recipes_path(current_user) %></li>
+                    <% end %>
+                    <li><i class="fa fa-user fa-3x"></i><%= link_to 'Usuários', users_path %></li>
                     <li><i class="fa fa-paper-plane fa-3x"></i><%= link_to "Enviar uma receita", new_recipe_path %></li>
                     <li><i class="fa fa-leaf fa-3x"></i><a href="/about">Sobre Nós</a></li>
                   </ul>
