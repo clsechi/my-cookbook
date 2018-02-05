@@ -24,4 +24,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :index] do
     get 'recipes'
   end
+
+  namespace :api, defaults: { format: 'json' } do
+    resources :recipes, only: [:index, :show] do
+      collection do
+        get 'search'
+      end
+    end
+  end
 end
