@@ -1,5 +1,4 @@
 class RecipeTypesController < ApplicationController
-
   before_action :set_cuisines_and_types, only: [:show]
 
   def show

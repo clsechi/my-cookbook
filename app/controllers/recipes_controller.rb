@@ -1,9 +1,11 @@
 class RecipesController < ApplicationController
-  before_action :set_cuisines_and_types, only: [:show, :new, :edit, :favorites, :index]
+  before_action :set_cuisines_and_types, only: [:show, :new, :edit, :favorites,
+                                                :index]
 
-  before_action :set_recipe, only: [:update, :destroy, :favorite, :unfavorite, :share] #:edit
+  before_action :set_recipe, only: [:update, :destroy, :favorite, :unfavorite,
+                                    :share] #:edit
 
-  before_action :authenticate_user!, only: [:favorite, :new, :destroy] #:edit
+  before_action :authenticate_user!, only: [:favorite, :new, :destroy] # :edit
 
   def index
     @recipes = Recipe.all
@@ -50,14 +52,13 @@ class RecipesController < ApplicationController
 
   def search
     @recipe_name = params[:busca]
-    @recipes = Recipe.where "title like ?", "%#{@recipe_name}%"
+    @recipes = Recipe.where 'title like ?', "%#{@recipe_name}%"
   end
 
   def destroy
-    if @recipe.destroy
-      redirect_to root_path
-      flash[:notice] = 'Receita removida com sucesso'
-    end
+    @recipe.destroy
+    redirect_to root_path
+    flash[:notice] = 'Receita removida com sucesso'
   end
 
   def favorite
@@ -88,7 +89,9 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :recipe_type_id, :cuisine_id, :difficulty, :cook_time, :ingredients, :method, :photo, :featured)
+    params.require(:recipe).permit(:title, :recipe_type_id, :cuisine_id,
+                                  :difficulty, :cook_time, :ingredients,
+                                  :method, :photo, :featured)
   end
 
   def set_cuisines_and_types
@@ -99,5 +102,4 @@ class RecipesController < ApplicationController
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
-  
 end
