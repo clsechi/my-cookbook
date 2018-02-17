@@ -14,7 +14,7 @@ describe 'visitor see recipes via API', type: :request do
 
     expect(response.status).to eq 200
 
-    json.zip(recipes).each do |reply, recipe|
+    json['recipes'].zip(recipes).each do |reply, recipe|
       expect(reply['title']).to eq(recipe.title)
     end
   end
