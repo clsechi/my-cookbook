@@ -1,8 +1,8 @@
-# README
-
 # My Cook Book
 
 That's the first project used in Campus Code course.
+
+A system that can store recipes create by users.
 
 Trata-se de uma representação minimalista de um sistema de gerenciamento de produtos e suas dependências.
 
@@ -98,7 +98,7 @@ GET **/api/recipes** ( Return all recipes )
 }
 ```
 
-GET **/api/recipes/[:recipe_id]** ( Return a spécific recipe)
+GET **/api/recipes/[:recipe_id]** ( Return a specific recipe)
 > ###### Success
 > status 200 <br>
 ```json
