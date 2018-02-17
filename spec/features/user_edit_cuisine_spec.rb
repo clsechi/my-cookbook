@@ -5,6 +5,7 @@ feature 'User edit cuisine' do
     user = create(:user)
     cuisine = create(:cuisine, name: 'Japoesa')
 
+    login_as user
     visit edit_cuisine_path(cuisine)
     fill_in 'Nome', with: 'Japonesa'
     click_on 'Enviar'
@@ -16,8 +17,9 @@ feature 'User edit cuisine' do
   scenario 'do not duplicate a cuisine' do
     user = create(:user)
     cuisine = create(:cuisine, name: 'Brasileira')
-    another_cuisine = create(:cuisine, name: 'Italiana')
+    create(:cuisine, name: 'Italiana')
 
+    login_as user
     visit edit_cuisine_path(cuisine)
     fill_in 'Nome', with: 'Italiana'
     click_on 'Enviar'

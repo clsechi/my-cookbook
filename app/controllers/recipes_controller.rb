@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    # @recipe.ingredients = @recipe.ingredients.split(',')
+    @ingredients = @recipe.ingredients.split(',')
   end
 
   def new
@@ -90,8 +90,8 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:title, :recipe_type_id, :cuisine_id,
-                                  :difficulty, :cook_time, :ingredients,
-                                  :method, :photo, :featured)
+                                   :difficulty, :cook_time, :ingredients,
+                                   :method, :photo, :featured)
   end
 
   def set_cuisines_and_types

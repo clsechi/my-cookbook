@@ -11,8 +11,8 @@ feature 'Visitor send recipe to a friend' do
     fill_in 'Mensagem', with: 'Essa receita é muito legal'
 
     expect(RecipesMailer).to receive(:share).with('amigo@email.com',
-      'Essa receita é muito legal',
-      recipe.id).and_call_original
+                                                  'Essa receita é muito legal',
+                                                  recipe.id).and_call_original
     click_on 'Enviar'
 
     expect(page).to have_content('Receita enviada para amigo@email.com')

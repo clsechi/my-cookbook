@@ -2,31 +2,32 @@ require 'rails_helper'
 
 feature 'Visitor search for recipes' do
   scenario 'from home page' do
-    # cria os dados necessários previamente
-    user = create(:user)    
+    # cria os dados necessarios previamente
+    user = create(:user)
     cuisine = create(:cuisine, name: 'Brasileira')
     recipe_type = create(:recipe_type, name: 'Sobremesa')
     another_recipe_type = create(:recipe_type, name: 'Entrada')
 
     recipe = create(:recipe, title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, user: user, difficulty: 'Médio',
-                           cook_time: 60,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+                             cuisine: cuisine, user: user, difficulty: 'Médio',
+                             cook_time: 60,
+                             ingredients: 'Farinha, açucar, cenoura')
 
-    another_recipe = create(:recipe, title: 'Salada de cenoura', recipe_type: another_recipe_type,
-                           cuisine: cuisine, user: user, difficulty: 'Facil',
-                           cook_time: 60,
-                           ingredients: 'Cenoura e legumes',
-                           method: 'Cozinhe a cenoura, misture com os legumes')
+    another_recipe = create(:recipe, title: 'Salada de cenoura',
+                                     recipe_type: another_recipe_type,
+                                     cuisine: cuisine, user: user,
+                                     difficulty: 'Facil',
+                                     cook_time: 60,
+                                     ingredients: 'Cenoura e legumes')
 
-    # simula a ação do usuário
+    # simula a acao do usuario
     visit root_path
     fill_in 'Busca', with: 'Bolo de cenoura'
     click_on 'Buscar'
 
-    # expectativas do usuário após a ação
-    expect(page).to have_css('h2', text: 'Resultado da busca por: Bolo de cenoura')
+    # expectativas do usuario apos a acao
+    expect(page)
+      .to have_css('h2', text: 'Resultado da busca por: Bolo de cenoura')
     expect(page).to have_css('h3', text: recipe.title)
     expect(page).to have_css('p', text: recipe.recipe_type.name)
     expect(page).to have_css('p', text: recipe.cuisine.name)
@@ -36,24 +37,16 @@ feature 'Visitor search for recipes' do
   end
 
   scenario 'and navigate to recipe details' do
-    # cria os dados necessários previamente
-    user = create(:user)
-    cuisine = Cuisine.create(name: 'Brasileira')
-    recipe_type = RecipeType.create(name: 'Sobremesa')
+    # cria os dados necessarios previamente
+    recipe = create(:recipe, title: 'Bolo de cenoura')
 
-    recipe = Recipe.create(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, user: user, difficulty: 'Médio',
-                           cook_time: 60,
-                           ingredients: 'Farinha, açucar, cenoura',
-                           method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
-
-    # simula a ação do usuário
+    # simula a acao do usuario
     visit root_path
     fill_in 'Busca', with: 'Bolo de cenoura'
     click_on 'Buscar'
     click_on 'Bolo de cenoura'
 
-    # expectativas do usuário após a ação
+    # expectativas do usuario apos a acao
     expect(current_path).to eq(recipe_path(recipe))
   end
 end

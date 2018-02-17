@@ -5,6 +5,7 @@ feature 'User edit recipe type' do
     user = create(:user)
     recipe_type = create(:recipe_type, name: 'Sobresa')
 
+    login_as user
     visit edit_recipe_type_path(recipe_type)
     fill_in 'Nome', with: 'Sobremesa'
     click_on 'Enviar'
@@ -16,8 +17,9 @@ feature 'User edit recipe type' do
   scenario 'do not duplicate a recipe type' do
     user = create(:user)
     recipe_type = create(:recipe_type, name: 'Sobremesa')
-    another_recipe_type = create(:recipe_type, name: 'Entrada')
+    create(:recipe_type, name: 'Entrada')
 
+    login_as user
     visit edit_recipe_type_path(recipe_type)
     fill_in 'Nome', with: 'Entrada'
     click_on 'Enviar'

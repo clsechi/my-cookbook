@@ -1,4 +1,4 @@
-require "rails_helper"
+require 'rails_helper'
 
 RSpec.describe RecipesMailer, type: :mailer do
   describe 'share' do
@@ -15,7 +15,6 @@ RSpec.describe RecipesMailer, type: :mailer do
       expect(mail.body).to include 'CookBook'
     end
 
-    #add more tests
-
+    # add more tests
   end
 end

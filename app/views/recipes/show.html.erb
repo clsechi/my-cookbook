@@ -34,10 +34,9 @@
               <h5>Ingredientes:</h5>
               <!-- Recipe ingredients -->
               <ul class="list-unstyled">
-                <% for i in 0..@recipe.ingredients.length %>
-                  <li><i class="fa fa-check"></i> <%= @recipe.ingredients[i] %></li>
+                <% @ingredients.each do |ing| %>
+                  <li class="text-capitalize"><i class="fa fa-check"></i><%= ing.strip %></li>
                 <% end %>
-                  <li><i class="fa fa-check"></i> <%= @recipe.ingredients %></li>
               </ul>
             </div>
             <% if user_signed_in? %>

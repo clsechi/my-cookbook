@@ -5,7 +5,8 @@ describe 'visitor see recipes via API', type: :request do
     user = create(:user)
     cuisine = create(:cuisine, name: 'Brasileira')
     recipe_type = create(:recipe_type, name: 'Sobremesa')
-    recipes = create_list(:recipe, 6, recipe_type: recipe_type, cuisine: cuisine, user: user)
+    recipes = create_list(:recipe, 6, recipe_type: recipe_type,
+                                      cuisine: cuisine, user: user)
 
     get api_recipes_url
 

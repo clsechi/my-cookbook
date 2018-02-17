@@ -1,6 +1,8 @@
 class RecipeTypesController < ApplicationController
   before_action :set_cuisines_and_types, only: [:show]
 
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+
   def show
     @recipe_type = RecipeType.find(params[:id])
     @recipes = Recipe.where(recipe_type_id: @recipe_type.id)

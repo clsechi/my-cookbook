@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :favorite_recipes
+  has_many :favorite_recipes, dependent: :destroy
   has_many :favorites, through: :favorite_recipes, source: :recipe
 
   def favorited?(recipe)
@@ -16,10 +16,10 @@ class User < ApplicationRecord
   end
 
   def recipes_quant
-    Recipe.where('user_id = ?', "#{id}").size
+    Recipe.where('user_id = ?', id.to_s).size
   end
 
   def recipes
-    Recipe.where('user_id = ?', "#{id}")
+    Recipe.where('user_id = ?', id.to_s)
   end
 end

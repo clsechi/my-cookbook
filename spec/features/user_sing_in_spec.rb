@@ -36,7 +36,7 @@ feature 'User sign in' do
     fill_in 'Nome', with: 'Romario'
     fill_in 'Cidade', with: 'Ibiza'
     fill_in 'E-mail', with: 'romario@google.com'
-    #fill_in 'Senha', with: user.password
+    # fill_in 'Senha', with: user.password
     fill_in 'Facebook', with: 'facebook.com/romario1'
     click_on 'Enviar'
 

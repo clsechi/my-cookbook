@@ -1,14 +1,15 @@
 require 'rails_helper'
 
 feature 'User choose favorite recipes' do
-	scenario 'mark one recipe as favorite' do
-		user = create(:user)
+  scenario 'mark one recipe as favorite' do
+    user = create(:user)
     cuisine = create(:cuisine, name: 'Brasileira')
     recipe_type = create(:recipe_type, name: 'Sobremesa')
     recipe = create(:recipe, title: 'Bolo de cenoura', recipe_type: recipe_type,
-     cuisine: cuisine, user: user)
-    another_recipe = create(:recipe, title: 'Bolo de chocolate', recipe_type: recipe_type,
-     cuisine: cuisine, user: user)
+                             cuisine: cuisine, user: user)
+    another_recipe = create(:recipe, title: 'Bolo de chocolate',
+                                     recipe_type: recipe_type,
+                                     cuisine: cuisine, user: user)
 
     login_as(user)
     visit recipe_path(recipe)
@@ -24,11 +25,12 @@ feature 'User choose favorite recipes' do
     cuisine = create(:cuisine, name: 'Brasileira')
     recipe_type = create(:recipe_type, name: 'Sobremesa')
     recipe = create(:recipe, title: 'Bolo de cenoura', recipe_type: recipe_type,
-     cuisine: cuisine, user: user)
-    another_recipe = create(:recipe, title: 'Bolo de chocolate', recipe_type: recipe_type,
-     cuisine: cuisine, user: user)
+                             cuisine: cuisine, user: user)
+    another_recipe = create(:recipe, title: 'Bolo de chocolate',
+                                     recipe_type: recipe_type,
+                                     cuisine: cuisine, user: user)
     dont_show_recipe = create(:recipe, title: 'Torta', recipe_type: recipe_type,
-     cuisine: cuisine, user: user)
+                                       cuisine: cuisine, user: user)
 
     login_as(user)
     visit recipe_path(recipe)
@@ -40,13 +42,12 @@ feature 'User choose favorite recipes' do
     expect(page).to have_content(recipe.title)
     expect(page).to have_content(another_recipe.title)
     expect(page).not_to have_content(dont_show_recipe.title)
-
   end
 
   scenario 'unfavorite recipe' do
     user = create(:user)
-    recipe = create(:recipe, title:'Bolo de beterraba', user: user)
-    favorite = create(:favorite_recipe, user: user, recipe: recipe)
+    recipe = create(:recipe, title: 'Bolo de beterraba', user: user)
+    create(:favorite_recipe, user: user, recipe: recipe)
 
     login_as(user)
     visit recipe_path(recipe)
