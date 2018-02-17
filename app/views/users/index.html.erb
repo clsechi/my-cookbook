@@ -1,9 +1,37 @@
-<h1>Usuários do CookBook</h1>
+<div class="container padd">
+  <!-- Default Heading -->
+  <div class="default-heading">
+    <!-- Crown image -->
+    <img class="img-responsive" src="/img/crown.png" alt="" />
 
-<% @users.each do |user| %>
-  <p>Nome: <%= link_to user.name, user_recipes_path(user) %></p>
-  <p>Email: <%= user.email %></p>
-  <p>Cidade: <%= user.city %></p>
-  <p>Receitas cadastradas: <%= user.recipes_quant %> </p>
-  <hr>
-<% end %>
+    <h2>Usuários do CookBook</h2>
+
+    <p>Os nossos usuários</p>
+
+    <div class="border"></div>
+  </div>
+  <div class="row">
+    <% @users.each do |user| %>
+      <div class="col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Nome: <%= link_to user.name || user.email, user_recipes_path(user), class: "strong" %></h3>
+          </div>
+          <div class="panel-body">
+            <p>Email: <%= user.email %></p>
+            <p>Cidade: <%= user.city %></p>
+            <p>Receitas cadastradas: <%= user.recipes_quant %> </p>
+          </div>
+          <div class="panel-footer text-center">
+            <% unless user.facebook.blank? %>
+              <a href= <%= "https://facebook.com/#{user.facebook}" %> class="facebook" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+            <% end %>
+            <% unless user.twitter.blank? %>
+              <a href= <%= "https://twitter.com/#{user.twitter}" %> class="twitter" target="_blank"><i class="fa fa-twitter fa-2x"></i></a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

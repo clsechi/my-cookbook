@@ -1,9 +1,25 @@
-<h1>Receitas de <%= @user.name %></h1>
+<div class="dishes padd">
+  <div class="container">
+    <!-- Default Heading -->
+    <div class="default-heading">
+      <!-- Crown image -->
+      <img class="img-responsive" src="/img/crown.png" alt="" />
+      <!-- Heading -->
+      <h2>Receitas de
+        <%= @user.name  || @user.email%></h2>
 
-<% if @user.recipes.blank? %>  
-  <p>Esse usuário não possui receitas cadastradas</p>
-<% else %>
-  <% @user.recipes.each do |rec| %>
-    <p><%= link_to rec.title, recipe_path(rec) %></p>
-  <% end %>
-<% end %>
+      <p>As receitas desse usuário</p>
+      <!-- Border -->
+      <div class="border"></div>
+    </div>
+    <div class="row">
+      <% if @user.recipes.blank? %>
+        <p>Esse usuário não possui receitas cadastradas</p>
+      <% else %>
+        <% @user.recipes.each do |recipe| %>
+          <%= render recipe %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

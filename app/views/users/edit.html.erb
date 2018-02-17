@@ -1,22 +1,38 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="container padd">
+  <!-- Default Heading -->
+  <div class="default-heading">
+    <!-- Crown image -->
+    <img class="img-responsive" src="/img/crown.png" alt="" />
 
-<%= form_for @user do |f| %>
-<div>
-  <%= f.label :name, 'Nome' %>
-  <%= f.text_field :name, required: true  %>
+    <h2>Seu Perfil</h2>
+
+    <p>Preencha seu nome e cidade</p>
+
+    <div class="border"></div>
+  </div>
+
+  <%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.label :name, 'Nome' %>
+    <%= f.text_field :name, required: true, class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :city, 'Cidade' %>
+    <%= f.text_field :city, required: true, class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email, 'E-mail' %>
+    <%= f.text_field :email, required: true, class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :facebook, 'Facebook' %>
+    <%= f.text_field :facebook, class: "form-control"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :twitter, 'Twitter' %>
+    <%= f.text_field :twitter, class: "form-control"  %>
+  </div>
+  <%= f.submit 'Enviar', class: "btn btn-success" %>
+  <% end %>
+
 </div>
-<div>
-  <%= f.label :city, 'Cidade' %>
-  <%= f.text_field :city, required: true  %>
-</div>
-<div>
-  <%= f.label :email, 'E-mail' %>
-  <%= f.text_field :email, required: true  %>
-</div>
-<div>
-  <%= f.label :facebook, 'Facebook' %>
-  <%= f.text_field :facebook  %>
-</div>
-<%= f.submit 'Enviar' %>
-<% end %>
