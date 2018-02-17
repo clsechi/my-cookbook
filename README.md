@@ -4,8 +4,6 @@ That's the first project used in Campus Code course.
 
 A system that can store recipes create by users.
 
-Trata-se de uma representação minimalista de um sistema de gerenciamento de produtos e suas dependências.
-
 The system have can be used by the web interface or using the API.
 
 A visitor can see recipes, filter recipes by cuisines and recipe types, search recipes, send a recipe to a friend by email and see the last favorite recipes from users.
