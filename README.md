@@ -8,11 +8,11 @@ Trata-se de uma representação minimalista de um sistema de gerenciamento de pr
 
 The system have can be used by the web interface or using the API.
 
+A visitor can see recipes, filter recipes by cuisines and recipe types, search recipes, send a recipe to a friend by email and see the last favorite recipes from users.
 
+A user can do the things above and register and edit a recipe, a cuisine and a recipe type, choose a favorite recipe, remove a recipe, see other users profiles and edit your profile.
 
-Na interface do usuário, o mesmo é capaz de cadastrar categorias, produtos e planos com seus devidos preços e suas periodicidades.
-
-Já a API é responsável por enviar dados no formato JSON do conteúdo cadastrado no banco de dados.
+The API now just send the data from all recipes or a specific recipe.
 
 Gems used
   - Devise          (Authentication)
@@ -71,7 +71,6 @@ localhost:3000/cuisines/[:cuisine_id]/edit
 ```
 localhost:3000/recipe_types/[:recipe_type_id]/edit
 ```
-
 
 # API
 
