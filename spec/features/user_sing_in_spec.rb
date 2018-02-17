@@ -36,13 +36,12 @@ feature 'User sign in' do
     fill_in 'Nome', with: 'Romario'
     fill_in 'Cidade', with: 'Ibiza'
     fill_in 'E-mail', with: 'romario@google.com'
-    # fill_in 'Senha', with: user.password
-    fill_in 'Facebook', with: 'facebook.com/romario1'
+    fill_in 'Facebook', with: 'romario1'
     click_on 'Enviar'
 
-    expect(page).to have_css('p', text: 'Romario')
-    expect(page).to have_css('p', text: 'Ibiza')
-    expect(page).to have_css('p', text: 'romario@google.com')
-    expect(page).to have_css('p', text: 'facebook.com/romario1')
+    expect(page).to have_css('h3', text: 'Nome: Romario')
+    expect(page).to have_css('p', text: 'Cidade: Ibiza')
+    expect(page).to have_css('p', text: 'Email: romario@google.com')
+    expect(page).to have_css('p', text: 'Facebook: /romario1')
   end
 end

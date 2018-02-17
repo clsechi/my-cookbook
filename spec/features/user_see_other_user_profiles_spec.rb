@@ -9,7 +9,7 @@ feature 'User see other user profiles' do
     visit root_path
     click_on 'Usuários'
 
-    expect(page).to have_css('p', text: user.email)
+    expect(page).to have_css('h3', text: "Nome: #{user.name}")
     expect(page).to have_css('p', text: another_user.email)
     expect(page).to have_css('p', text: 'Receitas cadastradas: 0')
   end
@@ -25,7 +25,7 @@ feature 'User see other user profiles' do
     click_on user.name
 
     expect(current_path).to eq(user_recipes_path(user))
-    expect(page).to have_css('h1', text: "Receitas de #{user.name}")
+    expect(page).to have_css('h2', text: "Receitas de #{user.name}")
     expect(page).to have_link(recipe.title)
     expect(page).not_to have_content(another_user.email)
   end
